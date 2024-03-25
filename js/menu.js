@@ -1,9 +1,6 @@
 import { Producto } from "./classes.js";
 
 
-const btnForm = document.getElementById('btnForm');
-
-
 
 //Mostramos las categorias con sus productos
 function menuDisplay() {
@@ -35,48 +32,80 @@ function menuDisplay() {
 
     ];
 
-    const productsContainer = document.getElementById('productsContainer');
-    //Lista de categorias
-    const categoryList = {};
+    //Obtenemos el contenedor principal
+    const categoriesContainer = document.getElementById('categoriesContainer');
+
+    //Creo una array vacia en la cual guardare todas mis categorias
+    const categoriesList = {};
+
+    //recorriendo la lista de productos y obteniendo la lista de productos de cada categoria
     productList.forEach(p => {
-        if (!categoryList[p.category]) {
-            categoryList[p.category] = [];
+        if (!categoriesList[p.category]) {
+            categoriesList[p.category] = [];
         }
-        categoryList[p.category].push(p);
-        console.log(categoryList);
+        categoriesList[p.category].push(p);
+        console.log(categoriesList);
     });
 
-    for (const category in categoryList) {
-        if (categoryList.hasOwnProperty(category)) {
+    //Recorremos todas las categorias de mi lista 
+    for (const category in categoriesList) {
+        //Comprobamos que el objeto que obtenemos tenga el mismo valor en categoria
+        if (categoriesList.hasOwnProperty(category)) {
 
-            const productCategory = categoryList[category];
+            //Guardamos los productos
+            const products = categoriesList[category];
 
+            //Creamos un div que sera el contenedor de nuestra categoria
             const categoryContainer = document.createElement('div');
-            categoryContainer.innerHTML = `<h2>${category}</h2>`;
-            categoryContainer.style.display = "flex"
+            categoryContainer.innerHTML = `
+            <h2 class=" py-4">
+                <span class=" text-3xl text-pantone">
+                    ${category}
+                </span>
+            </h2>`;
 
-            productCategory.forEach(producto => {
+            //añadimos estilo a nuestro contenedor
+            categoryContainer.classList.add('p-2', 'bg-black');
+
+            const productContainer = document.createElement('div');
+            productContainer.classList.add('flex', 'gap-x-4', 'overflow-scroll');
+
+            //Recorremos todos nuestros productos
+            products.forEach(producto => {
+
+                //creamos un div por producto
                 const productoElement = document.createElement('div');
-                productoElement.classList.add('producto');
+
+                //Añadimos estilos
+                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[29rem]');
+
+                //Creamos el btn para añadir al carrito
                 const btnAdd = document.createElement('button');
-                btnAdd.classList.add('btnCarrito');
+                //Damos estilos
+                btnAdd.classList.add('btnCarrito', 'absolute', 'bottom-0', 'top-[90%]', 'left-0', 'right-0', 'py-2', 'px-1', 'bg-pantone', 'text-pantone_gunpowder');
+                //Colocamos un evento
                 btnAdd.addEventListener("click", () => {
                     addToCart(producto.id)
                 });
-                btnAdd.innerHTML = `Añadir al Carrito`
+                btnAdd.textContent = `Añadir al Carrito`;
+
+
                 productoElement.innerHTML = `
-                <img src="${producto.imgUrl}" alt="${producto.name}">
-                <h3>${producto.name}</h3>
-                <p>${producto.description}</p>
-                <p>Precio: $${producto.price}</p>
-                <p>Stock: ${producto.stock}</p>
-                <p> Categoria: ${producto.category} </p>
+                <div class=" w-52 h-52 flex-shrink-0">
+                    <img class=" w-full h-full object-cover object-center" src="${producto.imgUrl}" alt="">
+                </div>
+                <h3 class="mb-2 mt-2 text-pantone ">${producto.name}</h3>
+                <p class="mb-2">${producto.description}</p>
+                <p><span class="text-pantone">Precio:</span> $${producto.price}</p>
+                <p><span class="text-pantone">Stock:</span> ${producto.stock}</p>
+                <p> <span class=" text-pantone">Categoria:</span> ${producto.category} </p>
                 `;
                 productoElement.appendChild(btnAdd);
-                categoryContainer.appendChild(productoElement)
+                productContainer.appendChild(productoElement);
+                categoryContainer.appendChild(productContainer);
             });
 
-            productsContainer.appendChild(categoryContainer);
+            categoriesContainer.appendChild(categoryContainer);
         }
     }
 
@@ -101,7 +130,7 @@ function addToCart(id) {
     } else {
 
         const producto = productList.find(producto => producto.id === id);
-    
+
         if (producto && producto.stock > 0) {
             cartList.push({ ...producto, cantidad: 1 });
             localStorage.setItem('carrito', JSON.stringify(cartList));
