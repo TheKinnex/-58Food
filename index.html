@@ -28,8 +28,8 @@
             </nav>
 
         </div>
-        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white  ">
-            <ul class="text-sm">
+        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
+            <ul class="text-lg">
                 <li class=" pl-2 border border-solid border-gray-500">
                     <a href="#">Home</a>
                 </li>
@@ -43,76 +43,112 @@
         </div>
     </nav>
 
-    <section class=" bg-no-repeat bg-cover bg-center mt-24 mx-auto max-w-7xl text-white h-[34.8rem]"
-        style="  background-image: url(https://img.freepik.com/fotos-premium/ambiente-restaurante-difumina-detras-superficie-superior-mesa-madera-fondo-pantalla-movil-vertical_892776-5709.jpg); backdrop-filter: blur(2px);  ">
-        <div class=" grid grid-cols-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
-            <div class=" flex flex-col text-center col-start-1 col-end-12 mt-8 pl-8">
-                <img src="./img/logo-color-blanco.svg" alt="">
-                <p class=" text-4xl text-white">
-                    Ahora a un click de tu casa.
-                </p>
-                <button class="mt-10 text-2xl p-3 mx-8 bg-pantone text-black font-semibold rounded ">
-                    <span>Pedir Ahora</span>
+    <main class="mt-24">
+
+        <!-- Main Text and Container -->
+        <section class=" bg-no-repeat bg-cover bg-center mx-auto max-w-7xltext-white h-[34.8rem]"
+            style="  background-image: url(https://img.freepik.com/fotos-premium/ambiente-restaurante-difumina-detras-superficie-superior-mesa-madera-fondo-pantalla-movil-vertical_892776-5709.jpg); backdrop-filter: blur(2px);  ">
+            <div class=" grid grid-cols-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
+                <div class=" flex flex-col text-center col-start-1 col-end-12 mt-8 pl-8">
+                    <img src="./img/logo-color-blanco.svg" alt="">
+                    <p class=" text-4xl text-white  " style="text-shadow: 1px 1px #ffc700;">
+                        Ahora a un click de tu casa.
+                    </p>
+                    <button class="mt-10 text-2xl p-3 mx-8 bg-pantone text-black font-semibold rounded ">
+                        <span>Pedir Ahora</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Who we are?-->
+        <section id="nosotros" class="mx-auto max-w-7xl px-4  pb-6 pt-8 bg-pantone_gunpowder">
+
+            <h2 data-aos="fade-up" class=" text-center text-4xl font-bold mb-12 text-pantone">
+                ¿Quienes Somos?
+            </h2>
+
+            <div data-aos="fade-up"
+                class="grid h-auto mb-16 w-full bg-white rounded-lg p-5 ">
+                <div class="w-full">
+                    <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Te simplificamos la Vida!</h3>
+                    <p class=" text-center text-lg ">
+                        Envía todas tus remesas familiares, sin complicaciones, desde cualquier parte del mundo, desde
+                        la
+                        comodidad de tu teléfono y sintiendo la satisfacción de que tus familiares recibirán tu ayuda en
+                        el menor tiempo posible.
+                    </p>
+                </div>
+                <div class="w-full">
+                    <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
+                        src="https://www.eude.es/wp-content/uploads/2018/05/Dise%C3%B1o-sin-t%C3%ADtulo-2021-05-11T165120.480.png"
+                        alt="">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Carrusel -->
+        <section class="mx-auto max-w-7xl px-4  pb-6 pt-8 mb-32 bg-black">
+
+
+            <div id="controls-carousel" class="relative w-full" data-carousel="static">
+
+                <!-- Text Section -->
+                <div class=" relative ">
+                    <h2 class="text-4xl text-center text-pantone font-semibold">
+                        <span>Los Favoritos</span>
+                    </h2>
+                </div>
+
+                <!-- Carousel wrapper -->
+                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+                    <!-- Item 1 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 2 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                        <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 3 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 4 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                    <!-- Item 5 -->
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    </div>
+                </div>
+
+                <!-- Slider controls -->
+                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
+                        </svg>
+                        <span class="sr-only">Previous</span>
+                    </span>
+                </button>
+                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
+                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                        </svg>
+                        <span class="sr-only">Next</span>
+                    </span>
+                </button>
+                <button type="button" class=" absolute top-56 left-[6.5rem] text-2xl p-3 bg-black text-pantone font-semibold rounded">
+                    <span class="">Pedir Ahora</span>
                 </button>
             </div>
-        </div>
-    </section>
-
-    <section id="nosotros" class="mt-4 lg:mt-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-6 pt-8 lg:pt-10">
-
-        <h2 data-aos="fade-up" class=" text-center text-5xl font-bold mb-12 text-pantone">
-            ¿Quienes Somos?
-        </h2>
-
-        <div data-aos="fade-up"
-            class="grid lg:lg:grid-cols-2 h-auto gap-x-8 mb-16 w-full lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
-            <div class="w-full">
-                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Te simplificamos la Vida!</h3>
-                <p class=" text-center text-lg ">
-                    Envía todas tus remesas familiares, sin complicaciones, desde cualquier parte del mundo, desde
-                    la
-                    comodidad de tu teléfono y sintiendo la satisfacción de que tus familiares recibirán tu ayuda en
-                    el menor tiempo posible.
-                </p>
-            </div>
-            <div class="w-full">
-                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
-                    src="https://www.eude.es/wp-content/uploads/2018/05/Dise%C3%B1o-sin-t%C3%ADtulo-2021-05-11T165120.480.png"
-                    alt="">
-            </div>
-
-        </div>
-
-        <div data-aos="fade-up"
-            class="grid lg:grid-cols-2 h-auto gap-x-8 mb-16 lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
-            <div class="w-full">
-                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
-                    src="https://www.iebschool.com/blog/wp-content/uploads/2015/06/pexels-fauxels-3183197.jpg"
-                    alt="">
-            </div>
-            <div class="w-full">
-                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Poder acortar esa distancia!</h3>
-                <p class=" text-center text-lg ">Ser un puente entre los Venezolanos que viven en el extranjero y
-                    sus familiares
-                    y amigos que aún viven en Venezuela.</p>
-            </div>
-        </div>
-
-        <div data-aos="fade-up"
-            class="grid lg:grid-cols-2 h-auto gap-x-8 lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
-            <div class="w-full">
-                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Es ayudarte a, Ayudar!</h3>
-                <p class=" text-center text-lg ">Es por eso que nos esforzamos para que tus remesas familiares
-                    lleguen en el
-                    menor tiempo posible, porque como Venezolanos que somos conocemos de primera mano las
-                    necesidades que viven nuestros familiares en Venezuela.</p>
-            </div>
-            <div class="w-full">
-                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
-                    src="https://www.decoraoficina.es/wp-content/uploads/2022/11/trabajar-en-equipo.jpeg" alt="">
-            </div>
-        </div>
-    </section>
+            
+        </section>
+    </main>
 </body>
 
 
