@@ -24,6 +24,8 @@
                         <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
                     </a>
                 </div>
+
+                <!--Btn Hamburguesa-->
                 <div class=" flex lg:hidden ">
                     <div class=" flex justify-center items-center gap-x-2 text-sm">
                         <button id="btnNavToggle">
@@ -34,6 +36,8 @@
             </nav>
 
         </div>
+
+        <!--Menu desplegable-->
         <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
             <ul class="text-lg">
                 <li class=" pl-2 border border-solid border-gray-500">
@@ -52,10 +56,12 @@
     <main class="mt-24">
 
         <!-- Main Text and Container -->
-        <section class=" bg-no-repeat bg-cover bg-center mx-auto max-w-7xltext-white h-[34.8rem]"
+        <section class=" bg-no-repeat bg-cover bg-center mx-auto max-w-full text-white h-[34.8rem] md:h-[32rem]"
             style="  background-image: url(https://img.freepik.com/fotos-premium/ambiente-restaurante-difumina-detras-superficie-superior-mesa-madera-fondo-pantalla-movil-vertical_892776-5709.jpg); backdrop-filter: blur(2px);  ">
-            <div class=" grid grid-cols-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
-                <div class=" flex flex-col text-center col-start-1 col-end-12 mt-8 pl-8">
+
+            <div
+                class="md:hidden grid grid-cols-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
+                <div class="md:hidden flex flex-col text-center items-center col-start-1 col-end-12 mt-8 pl-8">
                     <img src="./img/logo-color-blanco.svg" alt="">
                     <p class=" text-4xl text-white  " style="text-shadow: 1px 1px #ffc700;">
                         Ahora a un click de tu casa.
@@ -65,12 +71,30 @@
                     </button>
                 </div>
             </div>
+
+            <div
+                class="hidden md:grid grid-cols-12 grid-rows-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
+                <div
+                    class="block flex-col text-center items-center col-start-2 col-end-7 row-start-2 row-end-12 lg:col-start-2 lg:col-end-8 ">
+                    <img class="w-96" src="./img/logo-color-blanco.svg" alt="">
+                </div>
+                <div
+                    class="block flex-col text-center items-center col-start-7 col-end-12 row-start-6 row-end-12 lg:col-start-7 lg:row-start-5 mt-8 pl-8">
+                    <p class=" text-4xl lg:text-5xl text-white" style="text-shadow: 1px 1px #ffc700;">
+                        Nunca habia sido tan facil pedir para tu casa.
+                    </p>
+                    <button class="mt-10 text-2xl lg:text-3xl p-3 mx-8 bg-pantone text-black font-semibold rounded ">
+                        <span>Pedir Ahora</span>
+                    </button>
+                </div>
+            </div>
+
         </section>
 
         <!-- Who we are?-->
-        <section id="nosotros" class="mx-auto max-w-7xl px-4  pb-6 pt-8 bg-pantone_gunpowder">
+        <section id="nosotros" class="mx-auto max-w-full px-4  pb-6 pt-8 bg-pantone_gunpowder">
 
-            <h2 data-aos="fade-up" class=" text-center text-4xl font-bold mb-12 text-pantone">
+            <h2 data-aos="fade-up" class=" text-center text-4xl md:text-5xl font-bold mb-12 text-pantone">
                 ¿Quienes Somos?
             </h2>
 
@@ -94,48 +118,49 @@
         </section>
 
         <!-- Carrusel -->
-        <section class="mx-auto max-w-7xl  container  mb-96 ">
+        <section class="mx-auto max-w-full  container relative ">
 
-            <div class=" absolute z-20 left-20 ">
+            <div class="relative overflow-hidden">
+                <div id="carousel" class="flex transition-transform duration-300 h-56 md:h-[26rem] lg:h-[34rem]">
+                    <div class="w-screen flex-shrink-0 ">
+                        <img src="./img/DSC06660.jpg" alt="Image 1" class="w-full h-full object-cover object-center ">
+                    </div>
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC06464.jpg" alt="Image 2" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC06358.jpg" alt="Image 3" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC06707.jpg" alt="Image 4" class="w-full h-full object-cover object-center">
+                    </div>
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC07124.jpg" alt="Image 5" class="w-full h-full object-cover object-center">
+                    </div>
+                </div>
+                <button id="prevBtn"
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md z-20">
+                    < </button>
+                        <button id="nextBtn"
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md z-20">
+                            >
+                        </button>
+
+            </div>
+
+            <div class=" absolute top-0 left-0 right-0 bottom-0 w-full text-center ">
                 <h2>
-                    <span class="text-4xl font-semibold text-black text-center">
+                    <span class="text-4xl md:text-6xl font-semibold text-black text-center"
+                        style="text-shadow: 1px 1px 1px white;">
                         Los favoritos
                     </span>
                 </h2>
             </div>
-
-            <div class="relative overflow-hidden">
-                <div id="carousel" class="flex transition-transform duration-300 h-56">
-                    <div class="w-screen flex-shrink-0 ">
-                        <img src="./img/DSC06660.jpg" alt="Image 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-screen flex-shrink-0">
-                        <img src="./img/DSC06464.jpg" alt="Image 2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-screen flex-shrink-0">
-                        <img src="./img/DSC06358.jpg" alt="Image 3" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-screen flex-shrink-0">
-                        <img src="./img/DSC06707.jpg" alt="Image 4" class="w-full h-full object-cover">
-                    </div>
-                    <div class="w-screen flex-shrink-0">
-                        <img src="./img/DSC07124.jpg" alt="Image 5" class="w-full h-full object-cover">
-                    </div>
-                </div>
-                <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md">
-                    <
-                </button>
-                <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md">
-                    >
-                </button>
-                <button class=" mt-10 text-2xl text-pantone bg-black font-semibold rounded px-2 py-1 absolute bottom-0 left-[9.5rem] z-20">
-                    <span>
-                        Pedir
-                    </span>
-                </button>
-            </div>
-
-
+            <button class="absolute left-1/2 py-1 px-3 md:py-2 md:px-4 rounded right-0 bottom-4 w-full bg-black text-pantone -translate-x-1/2">
+                <span class=" text-2xl md:text-4xl font-semibold">
+                    Pedir
+                </span>
+            </button>
         </section>
     </main>
 </body>
