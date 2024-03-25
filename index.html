@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 </head>
 
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
 <body class=" font-Futura ">
 
     <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
@@ -68,8 +74,7 @@
                 ¿Quienes Somos?
             </h2>
 
-            <div data-aos="fade-up"
-                class="grid h-auto mb-16 w-full bg-white rounded-lg p-5 ">
+            <div data-aos="fade-up" class="grid h-auto mb-16 w-full bg-white rounded-lg p-5 ">
                 <div class="w-full">
                     <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Te simplificamos la Vida!</h3>
                     <p class=" text-center text-lg ">
@@ -89,70 +94,77 @@
         </section>
 
         <!-- Carrusel -->
-        <section class="mx-auto max-w-7xl px-4  pb-6 pt-8 mb-32 bg-black">
+        <section class="mx-auto max-w-7xl  container  mb-96 ">
 
+            <div class=" absolute z-20 left-20 ">
+                <h2>
+                    <span class="text-4xl font-semibold text-black text-center">
+                        Los favoritos
+                    </span>
+                </h2>
+            </div>
 
-            <div id="controls-carousel" class="relative w-full" data-carousel="static">
-
-                <!-- Text Section -->
-                <div class=" relative ">
-                    <h2 class="text-4xl text-center text-pantone font-semibold">
-                        <span>Los Favoritos</span>
-                    </h2>
-                </div>
-
-                <!-- Carousel wrapper -->
-                <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
-                    <!-- Item 1 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-1.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+            <div class="relative overflow-hidden">
+                <div id="carousel" class="flex transition-transform duration-300 h-56">
+                    <div class="w-screen flex-shrink-0 ">
+                        <img src="./img/DSC06660.jpg" alt="Image 1" class="w-full h-full object-cover">
                     </div>
-                    <!-- Item 2 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                        <img src="/docs/images/carousel/carousel-2.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC06464.jpg" alt="Image 2" class="w-full h-full object-cover">
                     </div>
-                    <!-- Item 3 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-3.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <div class="w-screen flex-shrink-0">
+                        <img src="./img/DSC06358.jpg" alt="Image 3" class="w-full h-full object-cover">
                     </div>
-                    <!-- Item 4 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-4.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <div class="w-screen flex-shrink-0">
+                        <img src="/img/DSC06707.jpg" alt="Image 4" class="w-full h-full object-cover">
                     </div>
-                    <!-- Item 5 -->
-                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                        <img src="/docs/images/carousel/carousel-5.svg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
+                    <div class="w-screen flex-shrink-0">
+                        <img src="/img/DSC07124.jpg" alt="Image 5" class="w-full h-full object-cover">
                     </div>
                 </div>
-
-                <!-- Slider controls -->
-                <button type="button" class="absolute top-0 start-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-prev>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"/>
-                        </svg>
-                        <span class="sr-only">Previous</span>
-                    </span>
+                <button id="prevBtn" class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md">
+                    <
                 </button>
-                <button type="button" class="absolute top-0 end-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none" data-carousel-next>
-                    <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                        <svg class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
-                        </svg>
-                        <span class="sr-only">Next</span>
-                    </span>
+                <button id="nextBtn" class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md">
+                    >
                 </button>
-                <button type="button" class=" absolute top-56 left-[6.5rem] text-2xl p-3 bg-black text-pantone font-semibold rounded">
-                    <span class="">Pedir Ahora</span>
+                <button class=" mt-10 text-2xl text-pantone bg-black font-semibold rounded px-2 py-1 absolute bottom-0 left-[9.5rem] z-20">
+                    <span>
+                        Pedir
+                    </span>
                 </button>
             </div>
-            
+
+
         </section>
     </main>
 </body>
 
 
 <script>
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    let index = 0;
+
+    function showSlide() {
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => {
+        index = (index - 1 + 5) % 5;
+        showSlide();
+    });
+
+    nextBtn.addEventListener('click', () => {
+        index = (index + 1) % 5;
+        showSlide();
+    });
+
+
+
+
     document.getElementById('btnNavToggle').addEventListener('click', () => {
         const navDropDown = document.getElementById('navDropDown');
         if (navDropDown.className.includes('hidden')) {
