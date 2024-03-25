@@ -1,0 +1,57 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    .productResult img {
+        width: 200px;
+        height: auto;
+    }
+
+    .productResult {
+        margin-top: 20px;
+    }
+
+    img {
+        width: 200px;
+        height: auto;
+    }
+</style>
+<body>
+
+    <div>
+        <input type="text" placeholder="nombre" id="newProductName">
+        <br>
+        <textarea id="newProductDescripcion" placeholder="descripcion"></textarea>
+        <br>
+        <input type="file" id="newProductImgFile" accept="image/*"> <br>
+        <img class="img" id="newProductImgPreview"> <br>
+        <input type="number" id="newProductPrice" placeholder="precio"> <br>
+        <input type="number" id="newProductStock" placeholder="stock"> <br>
+        <select id="newProductCategory">
+        </select> 
+        <br>
+        <div style="display: none;" id="newCategoryInput">
+            <input id="newCategoryName" placeholder="nombre de la nueva categoria" type="text" required>
+        </div>
+        <br>
+        <button id="btnNewProduct"> Crear</button>
+    </div>
+
+    <div>
+        <input id="nameProduct" type="text" placeholder="buscar producto name / id">
+        <button id="btnFind">Buscar Producto</button>
+    </div>
+    <div id="productsList">
+
+    </div>
+
+</body>
+
+<script type="module" src="./js/products.js"></script>
+
+</html>

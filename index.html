@@ -1,0 +1,138 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+</head>
+
+<body class=" font-Futura ">
+
+    <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
+        <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
+            <nav class=" relative flex justify-between px-2">
+                <div class=" flex justify-center items-center">
+                    <a class=" flex justify-center items-center" href="./index.html">
+                        <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
+                    </a>
+                </div>
+                <div class=" flex lg:hidden ">
+                    <div class=" flex justify-center items-center gap-x-2 text-sm">
+                        <button id="btnNavToggle">
+                            <img class="w-10" src="" alt="">
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white  ">
+            <ul class="text-sm">
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="#">Home</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./login.html">Iniciar Sesion</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./register.html">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class=" bg-no-repeat bg-cover bg-center mt-24 mx-auto max-w-7xl text-white h-[34.8rem]"
+        style="  background-image: url(https://img.freepik.com/fotos-premium/ambiente-restaurante-difumina-detras-superficie-superior-mesa-madera-fondo-pantalla-movil-vertical_892776-5709.jpg); backdrop-filter: blur(2px);  ">
+        <div class=" grid grid-cols-12 gap-y-2 backdrop-opacity-80 backdrop-blur-md backdrop-grayscale h-full">
+            <div class=" flex flex-col text-center col-start-1 col-end-12 mt-8 pl-8">
+                <img src="./img/logo-color-blanco.svg" alt="">
+                <p class=" text-4xl text-white">
+                    Ahora a un click de tu casa.
+                </p>
+                <button class="mt-10 text-2xl p-3 mx-8 bg-pantone text-black font-semibold rounded ">
+                    <span>Pedir Ahora</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section id="nosotros" class="mt-4 lg:mt-2 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-6 pt-8 lg:pt-10">
+
+        <h2 data-aos="fade-up" class=" text-center text-5xl font-bold mb-12 text-pantone">
+            ¿Quienes Somos?
+        </h2>
+
+        <div data-aos="fade-up"
+            class="grid lg:lg:grid-cols-2 h-auto gap-x-8 mb-16 w-full lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
+            <div class="w-full">
+                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Te simplificamos la Vida!</h3>
+                <p class=" text-center text-lg ">
+                    Envía todas tus remesas familiares, sin complicaciones, desde cualquier parte del mundo, desde
+                    la
+                    comodidad de tu teléfono y sintiendo la satisfacción de que tus familiares recibirán tu ayuda en
+                    el menor tiempo posible.
+                </p>
+            </div>
+            <div class="w-full">
+                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
+                    src="https://www.eude.es/wp-content/uploads/2018/05/Dise%C3%B1o-sin-t%C3%ADtulo-2021-05-11T165120.480.png"
+                    alt="">
+            </div>
+
+        </div>
+
+        <div data-aos="fade-up"
+            class="grid lg:grid-cols-2 h-auto gap-x-8 mb-16 lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
+            <div class="w-full">
+                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
+                    src="https://www.iebschool.com/blog/wp-content/uploads/2015/06/pexels-fauxels-3183197.jpg"
+                    alt="">
+            </div>
+            <div class="w-full">
+                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Poder acortar esa distancia!</h3>
+                <p class=" text-center text-lg ">Ser un puente entre los Venezolanos que viven en el extranjero y
+                    sus familiares
+                    y amigos que aún viven en Venezuela.</p>
+            </div>
+        </div>
+
+        <div data-aos="fade-up"
+            class="grid lg:grid-cols-2 h-auto gap-x-8 lg:p-0 lg:rounded-none bg-white rounded-lg p-5 shadow-2xl lg:bg-transparent lg:shadow-none lg:rounded-none">
+            <div class="w-full">
+                <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Es ayudarte a, Ayudar!</h3>
+                <p class=" text-center text-lg ">Es por eso que nos esforzamos para que tus remesas familiares
+                    lleguen en el
+                    menor tiempo posible, porque como Venezolanos que somos conocemos de primera mano las
+                    necesidades que viven nuestros familiares en Venezuela.</p>
+            </div>
+            <div class="w-full">
+                <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
+                    src="https://www.decoraoficina.es/wp-content/uploads/2022/11/trabajar-en-equipo.jpeg" alt="">
+            </div>
+        </div>
+    </section>
+</body>
+
+
+<script>
+    document.getElementById('btnNavToggle').addEventListener('click', () => {
+        const navDropDown = document.getElementById('navDropDown');
+        if (navDropDown.className.includes('hidden')) {
+            navDropDown.classList.remove('hidden');
+            navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+        } else {
+            navDropDown.classList.remove('animate__fadeInDown');
+            navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+            setTimeout(() => {
+                navDropDown.classList.add('hidden');
+                navDropDown.classList.remove('animate__fadeOutUp');
+            }, 550);
+        }
+    });
+
+
+</script>
+
+</html>
