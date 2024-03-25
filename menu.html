@@ -4,29 +4,221 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu</title>
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <style>
     .producto img {
         width: 200px;
-        height: auto;
     }
 
     .img {
         width: 200px;
-        height: auto;
     }
 </style>
 
-<body>
+<body class="font-Futura overflow-visible">
+
+    <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
+        <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
+            <nav class=" relative flex justify-between px-2">
+                <div class=" flex justify-center items-center">
+                    <a class=" flex justify-center items-center" href="./index.html">
+                        <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
+                    </a>
+                </div>
+
+                <!--Btn Hamburguesa-->
+                <div class=" flex lg:hidden ">
+                    <div class=" flex justify-center items-center gap-x-2 text-sm">
+                        <button id="btnNavToggle">
+                            <img class="w-10" src="" alt="">
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+
+        <!--Menu desplegable-->
+        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
+            <ul class="text-lg">
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="#">Home</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./login.html">Iniciar Sesion</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./register.html">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="mt-24 bg-pantone_gunpowder">
+        <!--products container-->
+        <section class=" max-w-full  ">
+            <!--Title-->
+            <div class="pt-4 pb-4">
+                <h1 class=" text-pantone text-4xl font-semibold text-center">Nuestro Menu</h1>
+            </div>
+            <!--Example Categoria-->
+            <div class=" p-2 bg-black">
+                <h2 class=" py-4">
+                    <span class=" text-3xl text-pantone">
+                        Hamburguesas
+                    </span>
+                </h2>
+
+                <!--Container Products -->
+                <div class="flex gap-x-4  overflow-scroll">
+                    <!--Product-->
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06358.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 mt-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0 py-2 px-1 bg-pantone text-pantone_gunpowder">
+                                Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06464.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">Añadir al
+                                Carrito</button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06660.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">Añadir al
+                                Carrito</button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06707.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 mt-1 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">
+                                Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class=" p-2 bg-black">
+                <h2 class=" py-4">
+                    <span class=" text-3xl text-pantone">
+                        Entradas
+                    </span>
+                </h2>
+
+                <!--Container Products -->
+                <div class="flex gap-x-4  overflow-scroll">
+                    <!--Product-->
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06358.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 mt-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0 py-2 px-1 bg-pantone text-pantone_gunpowder">
+                                Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06464.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">Añadir al
+                                Carrito</button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06660.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">Añadir al
+                                Carrito</button>
+                        </div>
+                    </div>
+                    <div class=" relative bg-pantone_gunpowder producto text-white h-[29rem]">
+                        <div class="p-3 ">
+                            <div class=" w-52 h-52 flex-shrink-0">
+                                <img class=" w-full h-full object-cover object-center" src="./img/DSC06707.jpg" alt="">
+                            </div>
+                            <h3 class="mb-2 mt-1 text-pantone ">Aros de Cebolla</h3>
+                            <p class="mb-2">Aros de cebolla crujientes acompañados de salsa BBQ dsaddadsdagdahaddsada</p>
+                            <p><span class="text-pantone">Precio:</span> $5.99</p>
+                            <p><span class="text-pantone">Stock:</span> 30</p>
+                            <p> <span class=" text-pantone">Categoria:</span> Entradas </p>
+                            <button class="btnCarrito absolute bottom-0 top-[90%] left-0 right-0">
+                                Añadir al Carrito
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
 
     <div id="productsContainer">
 
     </div>
-    <div  style="margin-top: 20px;">
+    <div style="margin-top: 20px;">
         <h1>Carrito</h1>
         <div id="cartContainer">
-            
+
         </div>
         <button id="btnBuyCart" style="margin-top: 20px;"> Pagar </button>
     </div>
