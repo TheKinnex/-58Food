@@ -18,10 +18,19 @@
         background: #a88400;
         width: 2px;
     }
-    
+
+    .carritoContainer::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    .carritoContainer::-webkit-scrollbar-thumb {
+        background: white;
+        width: 1px;
+    }
+
 </style>
 
-<body class="font-Futura overflow-visible">
+<body class="font-Futura">
 
     <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
         <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
@@ -32,35 +41,27 @@
                     </a>
                 </div>
 
-                <!--Btn Hamburguesa-->
-                <div class=" flex lg:hidden ">
-                    <div class=" flex justify-center items-center gap-x-2 text-sm">
-                        <button id="btnNavToggle">
-                            <img class="w-10" src="" alt="">
+                <div class="flex">
+                    <div class=" flex justify-center items-center text-xl gap-8 text-white">
+                        <a href="./index.html">
+                            Home
+                        </a>
+                        <button id="showCart">
+                            Carrito
                         </button>
+                        <div id="navOptionAdmin" class=" hidden ">
+                            <a href="./products.html">
+                                Panel
+                            </a>
+                        </div>
                     </div>
                 </div>
             </nav>
 
         </div>
-
-        <!--Menu desplegable-->
-        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
-            <ul class="text-lg">
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="#">Home</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./login.html">Iniciar Sesion</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./register.html">Registrarse</a>
-                </li>
-            </ul>
-        </div>
     </nav>
 
-    <main class="mt-24 bg-pantone_gunpowder bg-pantone">
+    <main class="mt-24 bg-pantone_gunpowder">
         <!--products container-->
         <section id="categoriesContainer" class=" max-w-full  ">
             <!--Title-->
@@ -68,22 +69,34 @@
                 <h1 class=" text-pantone text-4xl font-semibold text-center">Nuestro Menu</h1>
             </div>
 
-                
-            </section>
+
+        </section>
+
+        <!-- Carrito PopUp -->
+        <div id="cartPopup"
+            class=" w-80 md:w-96 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-pantone_gunpowder/80 backdrop-blur text-white border border-solid border-pantone  z-50 hidden ">
+            <div class="m-5">
+                <!-- Close PopUp -->
+                <div class="">
+                    <button id="cartPopupClose">X</button>
+                    <h3 class=" text-center text-3xl">Carrito</h3>
+                </div>
+                <!-- Carrito Container -->
+                <div class="carritoContainer h-80 overflow-auto" id="cartPopupContainer">
+                </div>
+                <div class="pt-3 w-full flex items-center justify-center gap-5  ">
+                    <button id="btnPay" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Pagar Ahora</button>
+                    <button id="btnClear" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Limpiar Carrito</button>
+                </div>
+            </div>
+        </div>
+        </div>
+
     </main>
 
-    <div id="productsContainer">
-
-    </div>
-    <div style="margin-top: 20px;">
-        <h1>Carrito</h1>
-        <div id="cartContainer">
-
-        </div>
-        <button id="btnBuyCart" style="margin-top: 20px;"> Pagar </button>
-    </div>
 </body>
 
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script type="module" src="./js/menu.js"></script>
 
 </html>

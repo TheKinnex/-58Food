@@ -1,19 +1,15 @@
 import { Producto } from "./classes.js";
 
-document.getElementById('btnNavToggle').addEventListener('click', () => {
-    const navDropDown = document.getElementById('navDropDown');
-    if (navDropDown.className.includes('hidden')) {
-        navDropDown.classList.remove('hidden');
-        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
-    } else {
-        navDropDown.classList.remove('animate__fadeInDown');
-        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
-        setTimeout(() => {
-            navDropDown.classList.add('hidden');
-            navDropDown.classList.remove('animate__fadeOutUp');
-        }, 550);
+window.onload = () => {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
+        location.replace('../login.html')
     }
-});
+
+    if (JSON.parse(localStorage.getItem('usuario')).rol === 'admin') {
+        document.getElementById('navOptionAdmin').classList.remove('hidden')
+    }
+}
+
 
 //Mostramos las categorias con sus productos
 function menuDisplay() {
@@ -57,7 +53,6 @@ function menuDisplay() {
             categoriesList[p.category] = [];
         }
         categoriesList[p.category].push(p);
-        console.log(categoriesList);
     });
 
     //Recorremos todas las categorias de mi lista 
@@ -152,35 +147,7 @@ function addToCart(id) {
             alert('No hay stock')
         }
     }
-    cartDisplay();
-}
-
-function cartDisplay() {
-    const cartList = JSON.parse(localStorage.getItem('carrito')) || []
-    const container = document.getElementById('cartContainer');
-    container.innerHTML = ' ';
-    cartList.forEach(producto => {
-        const element = document.createElement('div')
-        element.classList.add('productoCarrito');
-        element.innerHTML = `
-        <p> ${producto.name} - Cantidad ${producto.cantidad} - Total ${producto.price * producto.cantidad} | ${producto.price} c/u </p> 
-        `
-        const btnEliminar = document.createElement('button');
-        btnEliminar.classList.add('btnEliminar');
-        btnEliminar.addEventListener('click', () => {
-            removeToCart(producto.id);
-        })
-        const btnAdd = document.createElement('button');
-        btnAdd.classList.add('btnAñadir');
-        btnAdd.addEventListener('click', () => {
-            addToCart(producto.id);
-        })
-        btnAdd.textContent = '+';
-        btnEliminar.textContent = '-';
-        element.appendChild(btnAdd);
-        element.appendChild(btnEliminar);
-        container.appendChild(element);
-    })
+    displayCartList();
 }
 
 function removeToCart(id) {
@@ -197,9 +164,90 @@ function removeToCart(id) {
         alert("El producto no se encontro")
     }
     localStorage.setItem('carrito', JSON.stringify(cartList));
-    cartDisplay();
+    displayCartList();
 }
+
+function clearCart() {
+    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
+    cartList = [];
+    localStorage.setItem('carrito', JSON.stringify(cartList));
+    displayCartList();
+}
+
+function displayCartList() {
+    const cartPopupContainer = document.getElementById('cartPopupContainer');
+    const cartList = JSON.parse(localStorage.getItem('carrito')) || [];
+
+
+    cartPopupContainer.innerHTML = ' ';
+
+    if (cartList.length == 0) {
+        cartPopupContainer.innerHTML = `
+        <div class=" flex w-full h-full justify-center items-center">
+        <h2 class=" text-3xl"> El Carrito Esta Vacio</h2>  
+        </div>
+        `
+
+        document.getElementById('btnPay').classList.add('hidden');
+        document.getElementById('btnClear').classList.add('hidden');
+    } else {
+
+        document.getElementById('btnClear').classList.remove('hidden');
+        document.getElementById('btnClear').classList.add('block');
+
+        document.getElementById('btnPay').classList.remove('hidden');
+        document.getElementById('btnPay').classList.add('block');
+
+        cartList.forEach(producto => {
+            const element = document.createElement('div')
+            element.classList.add('productoCarrito', 'mt-4');
+            element.innerHTML = `
+            <p class=" text-pantone">${producto.name}</p>
+            <p>Cantidad: ${producto.cantidad}</p>
+            <p>Total: ${(producto.price * producto.cantidad).toFixed(2)} | ${producto.price} c/u </p>
+            `
+            const btnEliminar = document.createElement('button');
+            btnEliminar.classList.add('btnEliminar');
+            btnEliminar.addEventListener('click', () => {
+                removeToCart(producto.id);
+            })
+            const btnAdd = document.createElement('button');
+            btnAdd.classList.add('btnAñadir');
+            btnAdd.addEventListener('click', () => {
+                addToCart(producto.id);
+            })
+            btnAdd.innerHTML = `
+            <lord-icon src="https://cdn.lordicon.com/zrkkrrpl.json" trigger="hover"
+            style="width:40px;height:40px" colors="primary:#0000,secondary:#ffc700">
+            </lord-icon>
+            `;
+            btnEliminar.innerHTML = `
+            <lord-icon src="https://cdn.lordicon.com/dykoqszm.json" trigger="hover"
+            style="width:40px;height:40px" colors="primary:#0000,secondary:#ffc700">
+            </lord-icon>
+            `;
+            element.appendChild(btnAdd);
+            element.appendChild(btnEliminar);
+            cartPopupContainer.appendChild(element);
+        })
+    }
+
+}
+
+function cartPopupDisplay() {
+    const cartPopup = document.getElementById('cartPopup');
+    displayCartList();
+    cartPopup.classList.remove('hidden');
+    cartPopup.classList.add('block');
+}
+
+
+
+document.getElementById('cartPopupClose').addEventListener('click', () => {cartPopup.classList.add('hidden'); cartPopup.classList.remove('block');});
+
+document.getElementById('btnClear').addEventListener('click', () => {clearCart()});
+
+document.getElementById('showCart').addEventListener('click', () => { cartPopupDisplay() })
 
 //Mostramos siempre al iniciar la pagina el menu
 menuDisplay()
-cartDisplay()
