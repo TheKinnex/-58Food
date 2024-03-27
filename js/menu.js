@@ -170,14 +170,16 @@ function removeToCart(id) {
 function clearCart() {
     let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
     cartList = [];
-    localStorage.setItem('carrito', JSON.stringify(cartList));
     displayCartList();
+    localStorage.setItem('carrito', JSON.stringify(cartList));
+    
 }
 
 function displayCartList() {
     const cartPopupContainer = document.getElementById('cartPopupContainer');
     const cartList = JSON.parse(localStorage.getItem('carrito')) || [];
-
+    let totalToPay = 0;
+    let countProducts = 0;
 
     cartPopupContainer.innerHTML = ' ';
 
@@ -187,16 +189,25 @@ function displayCartList() {
         <h2 class=" text-3xl"> El Carrito Esta Vacio</h2>  
         </div>
         `
+        document.getElementById('countProducts').textContent = ` `;
+        document.getElementById('totalToPayText').textContent = `Total a Pagar: $${totalToPay.toFixed(2)}`;
 
+
+        document.getElementById('bubbleCartIcon').classList.add('hidden')
         document.getElementById('btnPay').classList.add('hidden');
         document.getElementById('btnClear').classList.add('hidden');
     } else {
+
+        document.getElementById('bubbleCartIcon').classList.remove('hidden');
+        document.getElementById('bubbleCartIcon').classList.add('block');
 
         document.getElementById('btnClear').classList.remove('hidden');
         document.getElementById('btnClear').classList.add('block');
 
         document.getElementById('btnPay').classList.remove('hidden');
         document.getElementById('btnPay').classList.add('block');
+
+        
 
         cartList.forEach(producto => {
             const element = document.createElement('div')
@@ -206,6 +217,10 @@ function displayCartList() {
             <p>Cantidad: ${producto.cantidad}</p>
             <p>Total: ${(producto.price * producto.cantidad).toFixed(2)} | ${producto.price} c/u </p>
             `
+
+            totalToPay += (producto.price * producto.cantidad);
+            countProducts += 1;
+
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('btnEliminar');
             btnEliminar.addEventListener('click', () => {
@@ -229,7 +244,11 @@ function displayCartList() {
             element.appendChild(btnAdd);
             element.appendChild(btnEliminar);
             cartPopupContainer.appendChild(element);
+            
         })
+
+        document.getElementById('countProducts').textContent = `${countProducts}`;
+        document.getElementById('totalToPayText').textContent = `Total a Pagar: $${totalToPay.toFixed(2)}`;
     }
 
 }
@@ -250,4 +269,5 @@ document.getElementById('btnClear').addEventListener('click', () => {clearCart()
 document.getElementById('showCart').addEventListener('click', () => { cartPopupDisplay() })
 
 //Mostramos siempre al iniciar la pagina el menu
+displayCartList()
 menuDisplay()

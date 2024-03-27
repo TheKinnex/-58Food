@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +23,37 @@
         height: auto;
     }
 </style>
+
 <body>
+
+    <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
+        <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
+            <nav class=" relative flex justify-between px-2">
+                <div class=" flex justify-center items-center">
+                    <a class=" flex justify-center items-center" href="./index.html">
+                        <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
+                    </a>
+                </div>
+
+                <div class="flex">
+                    <div class=" flex justify-center items-center text-xl gap-8 text-white">
+                        <a href="./index.html">
+                            Home
+                        </a>
+                        <button id="showCart">
+                            Carrito
+                        </button>
+                        <div id="navOptionAdmin" class=" hidden ">
+                            <a href="./products.html">
+                                Panel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </nav>
     
     <h1>Carrito</h1>
     <div id="cartList">
@@ -39,4 +70,5 @@
 </body>
 
 <script src="./js/carrito.js"></script>
+
 </html>

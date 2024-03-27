@@ -46,9 +46,12 @@
                         <a href="./index.html">
                             Home
                         </a>
-                        <button id="showCart">
-                            Carrito
+                        <button id="showCart" class=" relative inline-block">
+                            Carrito 
+                            <div id="bubbleCartIcon" class="absolute -top-3 -right-4 bg-red-600 rounded-full p-3 hidden"></div>
+                            <span id="countProducts" class="absolute -top-[0.6rem] -right-2 text-sm  ">  </span>
                         </button>
+                        
                         <div id="navOptionAdmin" class=" hidden ">
                             <a href="./products.html">
                                 Panel
@@ -84,6 +87,7 @@
                 <!-- Carrito Container -->
                 <div class="carritoContainer h-80 overflow-auto" id="cartPopupContainer">
                 </div>
+                <p id="totalToPayText"></p>
                 <div class="pt-3 w-full flex items-center justify-center gap-5  ">
                     <button id="btnPay" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Pagar Ahora</button>
                     <button id="btnClear" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Limpiar Carrito</button>
