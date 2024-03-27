@@ -2,7 +2,7 @@ import { Producto } from "./classes.js";
 
 window.onload = () => {
     if (!JSON.parse(localStorage.getItem('usuario'))) {
-        location.replace('../login.html')
+        location.replace('./login.html')
     }
 
     if (JSON.parse(localStorage.getItem('usuario')).rol === 'admin') {
