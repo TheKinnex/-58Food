@@ -10,13 +10,15 @@
 </head>
 
 <style>
-    .producto img {
-        width: 200px;
+    .productContainer::-webkit-scrollbar {
+        width: 2px;
     }
 
-    .img {
-        width: 200px;
+    .productContainer::-webkit-scrollbar-thumb {
+        background: #a88400;
+        width: 2px;
     }
+    
 </style>
 
 <body class="font-Futura overflow-visible">
@@ -58,7 +60,7 @@
         </div>
     </nav>
 
-    <main class="mt-24 bg-pantone_gunpowder">
+    <main class="mt-24 bg-pantone_gunpowder bg-pantone">
         <!--products container-->
         <section id="categoriesContainer" class=" max-w-full  ">
             <!--Title-->
@@ -66,8 +68,8 @@
                 <h1 class=" text-pantone text-4xl font-semibold text-center">Nuestro Menu</h1>
             </div>
 
-
-        </section>
+                
+            </section>
     </main>
 
     <div id="productsContainer">

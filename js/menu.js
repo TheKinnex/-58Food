@@ -1,6 +1,19 @@
 import { Producto } from "./classes.js";
 
-
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
 
 //Mostramos las categorias con sus productos
 function menuDisplay() {
@@ -59,7 +72,7 @@ function menuDisplay() {
             const categoryContainer = document.createElement('div');
             categoryContainer.innerHTML = `
             <h2 class=" py-4">
-                <span class=" text-3xl text-pantone">
+                <span class=" text-3xl font-semibold md:text-4xl text-pantone">
                     ${category}
                 </span>
             </h2>`;
@@ -68,7 +81,7 @@ function menuDisplay() {
             categoryContainer.classList.add('p-2', 'bg-black');
 
             const productContainer = document.createElement('div');
-            productContainer.classList.add('flex', 'gap-x-4', 'overflow-scroll');
+            productContainer.classList.add('flex', 'gap-x-4', 'overflow-scroll', 'productContainer');
 
             //Recorremos todos nuestros productos
             products.forEach(producto => {
@@ -77,12 +90,12 @@ function menuDisplay() {
                 const productoElement = document.createElement('div');
 
                 //Añadimos estilos
-                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[29rem]');
+                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[28rem]');
 
                 //Creamos el btn para añadir al carrito
                 const btnAdd = document.createElement('button');
                 //Damos estilos
-                btnAdd.classList.add('btnCarrito', 'absolute', 'bottom-0', 'top-[90%]', 'left-0', 'right-0', 'py-2', 'px-1', 'bg-pantone', 'text-pantone_gunpowder');
+                btnAdd.classList.add('btnCarrito', 'absolute', 'bottom-0', 'top-[90%]', 'left-0', 'right-0', 'py-2', 'px-1', 'bg-pantone', 'text-pantone_gunpowder', 'font-bold');
                 //Colocamos un evento
                 btnAdd.addEventListener("click", () => {
                     addToCart(producto.id)
@@ -95,10 +108,10 @@ function menuDisplay() {
                     <img class=" w-full h-full object-cover object-center" src="${producto.imgUrl}" alt="">
                 </div>
                 <h3 class="mb-2 mt-2 text-pantone ">${producto.name}</h3>
-                <p class="mb-2">${producto.description}</p>
+                <p class="mb-2 w-52">${producto.description}</p>
                 <p><span class="text-pantone">Precio:</span> $${producto.price}</p>
                 <p><span class="text-pantone">Stock:</span> ${producto.stock}</p>
-                <p> <span class=" text-pantone">Categoria:</span> ${producto.category} </p>
+
                 `;
                 productoElement.appendChild(btnAdd);
                 productContainer.appendChild(productoElement);
@@ -136,6 +149,7 @@ function addToCart(id) {
             localStorage.setItem('carrito', JSON.stringify(cartList));
         } else {
             console.error("No se consiguio el producto")
+            alert('No hay stock')
         }
     }
     cartDisplay();

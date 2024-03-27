@@ -20,7 +20,6 @@ nextBtn.addEventListener('click', () => {
 
 
 
-
 document.getElementById('btnNavToggle').addEventListener('click', () => {
     const navDropDown = document.getElementById('navDropDown');
     if (navDropDown.className.includes('hidden')) {
