@@ -10,48 +10,130 @@
 </head>
 
 <style>
-    .productResult img {
-        width: 200px;
-        height: auto;
+    .productContainer::-webkit-scrollbar {
+        width: 2px;
     }
 
-    .productResult {
-        margin-top: 20px;
+    .productContainer::-webkit-scrollbar-thumb {
+        background: #a88400;
+        width: 2px;
     }
 
+    .carritoContainer::-webkit-scrollbar {
+        width: 2px;
+    }
+
+    .carritoContainer::-webkit-scrollbar-thumb {
+        background: white;
+        width: 1px;
+    }
     img {
-        width: 200px;
-        height: auto;
+        width: 13rem;
+        height: 13rem;
     }
 </style>
-<body>
 
-    <div>
-        <input type="text" placeholder="nombre" id="newProductName">
-        <br>
-        <textarea id="newProductDescripcion" placeholder="descripcion"></textarea>
-        <br>
-        <input type="file" id="newProductImgFile" accept="image/*"> <br>
-        <img class="img" id="newProductImgPreview"> <br>
-        <input type="number" id="newProductPrice" placeholder="precio"> <br>
-        <input type="number" id="newProductStock" placeholder="stock"> <br>
-        <select id="newProductCategory">
-        </select> 
-        <br>
-        <div style="display: none;" id="newCategoryInput">
-            <input id="newCategoryName" placeholder="nombre de la nueva categoria" type="text" required>
+<body class=" bg-pantone_gunpowder">
+
+    <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
+        <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
+            <nav class=" relative flex justify-between px-2">
+                <div class=" flex justify-center items-center">
+                    <a class=" flex justify-center items-center" href="./index.html">
+                        <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
+                    </a>
+                </div>
+
+                <!--Btn Hamburguesa-->
+                <div class=" flex lg:hidden ">
+                    <div class=" flex justify-center items-center gap-x-2 text-sm">
+                        <button id="btnNavToggle">
+                            <img class="w-10" src="" alt="">
+                        </button>
+                    </div>
+                </div>
+            </nav>
+
         </div>
-        <br>
-        <button id="btnNewProduct"> Crear</button>
-    </div>
 
-    <div>
-        <input id="nameProduct" type="text" placeholder="buscar producto name / id">
-        <button id="btnFind">Buscar Producto</button>
-    </div>
-    <div id="productsList">
+        <!--Menu desplegable-->
+        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
+            <ul class="text-lg">
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="#">Home</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./login.html">Iniciar Sesion</a>
+                </li>
+                <li class=" pl-2 border border-solid border-gray-500">
+                    <a href="./register.html">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
-    </div>
+    <main class="mt-24">
+        <section class="flex flex-col md:flex-row justify-between  items-center mb-4">
+            <!-- Buscador de productos -->
+            <div class="mb-4 md:mb-0">
+                <input id="nameProduct" type="text" placeholder="Buscar producto por nombre / ID"
+                    class="px-4 py-2 border rounded-md">
+                <button id="btnFind" class="px-4 py-2 bg-blue-500 text-white rounded-md ml-2">Buscar Producto</button>
+            </div>
+    
+            <!-- Botón Crear Producto -->
+            <button id="btnOpenCreateProduct" class="px-4 py-2 bg-green-500 text-white rounded-md">Crear Producto</button>
+        </section>
+    
+        <section id="categoriesContainer" class=" max-w-full  ">
+            <!--Title-->
+            <div class="pt-4 pb-4">
+                <h1 class=" text-pantone text-4xl font-semibold text-center">Productos</h1>
+            </div>
+    
+            <div id="productListContainer">
+    
+            </div>
+    
+        </section>
+    
+    
+        <!--Ventana emergente para editar producto -->
+        <div id="editProductModal" class=" md:mt-[6.5rem] fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+    
+        </div>
+    
+        <!-- Ventana emergente para crear nuevo producto -->
+        <div id="createProductModal" class=" fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+            <div class="bg-white p-6 rounded-md max-w-lg md:mt-[6.5rem]">
+                <h2 class="text-lg font-semibold mb-4">Crear Nuevo Producto</h2>
+                <!-- Aquí va el formulario para crear nuevo producto -->
+                <div>
+                    <input type="text" placeholder="Nombre" id="newProductName"
+                        class="w-full px-4 py-2 border rounded-md mb-2">
+                    <textarea id="newProductDescripcion" placeholder="Descripción"
+                        class="w-full px-4 py-2 border rounded-md mb-2"></textarea>
+                    <div class=" flex">
+                        <input type="file" id="newProductImgFile" accept="image/*"
+                        class="w-full px-4 py-2 border rounded-md mb-2">
+                    <img class="img" id="newProductImgPreview" class=" w-32 h-w-32 mb-2">
+                    </div>
+                    <input type="number" id="newProductPrice" placeholder="Precio"
+                        class="w-full px-4 py-2 border rounded-md mb-2">
+                    <input type="number" id="newProductStock" placeholder="Stock"
+                        class="w-full px-4 py-2 border rounded-md mb-2">
+                    <select id="newProductCategory" class="w-full px-4 py-2 border rounded-md mb-2">
+                    </select>
+                    <div class="hidden" id="newCategoryInput">
+                        <input id="newCategoryName" placeholder="Nombre de la nueva categoría" type="text" required
+                            class="w-full px-4 py-2 border rounded-md mb-2">
+                    </div>
+                </div>
+                <button id="btnNewProduct" class="px-4 py-2 bg-green-500 text-white rounded-md">Crear</button>
+                <button id="btnCloseCreateModal" class="px-4 py-2 bg-gray-500 text-white rounded-md ml-2">Cerrar</button>
+            </div>
+        </div>
+    </main>
 
 </body>
 

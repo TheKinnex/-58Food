@@ -9,6 +9,8 @@ window.onload = () => {
     }
 }
 
+document.getElementById('btnClearCart').addEventListener('click', () => {clearCart()})
+
 cartDisplay()
 
 
@@ -44,7 +46,7 @@ function cartDisplay() {
                 </button>
             </div>
             <div class=" flex justify-center items-center">
-                <img class=" w-44 h-44 md:w-48 md:h-48 " src="${producto.imgUrl}">
+                <img class=" object-cover w-44 h-44 md:w-48 md:h-48 " src="${producto.imgUrl}">
             </div>
         </div>
         
@@ -103,5 +105,12 @@ function addToCart(id) {
             console.error("No se consiguio el producto")
         }
     }
+    cartDisplay();
+}
+
+function clearCart() {
+    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
+    cartList = [];
+    localStorage.setItem('carrito', JSON.stringify(cartList));
     cartDisplay();
 }

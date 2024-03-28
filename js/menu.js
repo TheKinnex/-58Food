@@ -101,7 +101,7 @@ function menuDisplay() {
 
                 productoElement.innerHTML = `
                 <div class=" w-52 h-52 flex-shrink-0">
-                    <img class=" w-full h-full object-cover object-center" src="${producto.imgUrl}" alt="">
+                    <img class=" w-full h-full object-cover" src="${producto.imgUrl}" alt="">
                 </div>
                 <h3 class="mb-2 mt-2 text-pantone ">${producto.name}</h3>
                 <p class="mb-2 w-52">${producto.description}</p>
@@ -171,9 +171,8 @@ function removeToCart(id) {
 function clearCart() {
     let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
     cartList = [];
-    displayCartList();
     localStorage.setItem('carrito', JSON.stringify(cartList));
-    
+    displayCartList();
 }
 
 function displayCartList() {
@@ -264,9 +263,7 @@ function cartPopupDisplay() {
 
 
 document.getElementById('cartPopupClose').addEventListener('click', () => {cartPopup.classList.add('hidden'); cartPopup.classList.remove('block');});
-
 document.getElementById('btnClear').addEventListener('click', () => {clearCart()});
-
 document.getElementById('showCart').addEventListener('click', () => { cartPopupDisplay() })
 
 //Mostramos siempre al iniciar la pagina el menu

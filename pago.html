@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,17 +8,87 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h2>Pago</h2>
-    
-    <div id="paymentForm">
-        <input type="text" placeholder="TDC" id="tdc">
-        <input type="text" placeholder="Nombre y Apellido" id="name">
-        <input type="text" placeholder="CVV" id="cvv">
-        <button id="btnPay">Pagar</button>
-        <p id="totalToPay"></p>
-    </div>
+
+
+<body class=" bg-pantone_gunpowder">
+    <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
+        <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
+            <nav class=" relative flex justify-between px-2">
+                <div class=" flex justify-center items-center">
+                    <a class=" flex justify-center items-center" href="./index.html">
+                        <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
+                    </a>
+                </div>
+
+                <div class="flex">
+                    <div class=" flex justify-center items-center text-xl gap-8 text-white">
+                        <a href="./index.html">
+                            Inicio
+                        </a>
+                        <a href="./menu.html">
+                            Menu
+                        </a>
+                        <div id="navOptionAdmin" class=" hidden ">
+                            <a href="./products.html">
+                                Panel
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
+    </nav>
+
+    <main class="mt-24">
+        <section class=" flex justify-center items-center">
+            <div class="md:mx-7">
+                <div class=" grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Sección de Productos -->
+                    <div class="  flex flex-col justify-cente ">
+                        <h2 class="text-3xl mt-2 text-pantone font-bold mb-4 text-center">Productos</h2>
+                        <!-- Aquí irían los productos -->
+                        <div id="cartListContainer" class=" h-96 overflow-auto ">
+                            <div class="border border-gray-300 p-5 mb-4 rounded flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-bold">Producto 1</h3>
+                                    <p>Descripción del Producto 1</p>
+                                    <p>Precio: $XX.XX c/u || Total: $XX.XX </p>
+                                    <p>Cantidad: X</p>
+                                </div>
+                                <div>
+                                    <img class=" w-28 h-28 object-cover" src="" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Precio Total -->
+                        <div class=" text-2xl text-white p-4 rounded">
+                            <h3 class="text-pantone font-bold">Total a Pagar</h3>
+                            <p id="totalToPay">$XX.XX</p>
+                        </div>
+                    </div>
+
+                    <!-- Sección de Datos de Tarjeta -->
+                    <div class=" flex flex-col justify-center items-center">
+                        <h2 class="text-3xl font-bold mb-4 text-pantone">Datos de Tarjeta</h2>
+                        <div class="border border-gray-300 p-4 rounded">
+                            <input type="text" placeholder="TDC" id="tdc"
+                                class="w-full p-2 mb-4 border border-gray-300 rounded">
+                            <input type="text" placeholder="Nombre y Apellido" id="name"
+                                class="w-full p-2 mb-4 border border-gray-300 rounded">
+                            <input type="text" placeholder="CVV" id="cvv"
+                                class="w-full p-2 mb-4 border border-gray-300 rounded">
+                            <button id="btnPay"
+                                class="w-full bg-pantone text-black font-bold py-2 px-4 rounded">Pagar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
 </body>
 
 <script src="./js/pagar.js"></script>
+
 </html>
