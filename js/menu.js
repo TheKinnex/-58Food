@@ -1,5 +1,6 @@
 import { Producto } from "./classes.js";
 
+/*
 window.onload = () => {
     if (!JSON.parse(localStorage.getItem('usuario'))) {
         location.replace('./login.html')
@@ -9,7 +10,7 @@ window.onload = () => {
         document.getElementById('navOptionAdmin').classList.remove('hidden')
     }
 }
-
+*/
 
 //Mostramos las categorias con sus productos
 function menuDisplay() {
@@ -219,7 +220,7 @@ function displayCartList() {
             `
 
             totalToPay += (producto.price * producto.cantidad);
-            countProducts += 1;
+            countProducts += producto.cantidad;
 
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('btnEliminar');

@@ -1,46 +1,66 @@
+
+window.onload = () => {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
+        location.replace('./login.html')
+    }
+
+    if (JSON.parse(localStorage.getItem('usuario')).rol === 'admin') {
+        document.getElementById('navOptionAdmin').classList.remove('hidden')
+    }
+}
+
 cartDisplay()
 
-document.getElementById('btnClearCart').addEventListener('click', clearCart)
 
 function cartDisplay() {
+
     const cartList = JSON.parse(localStorage.getItem('carrito')) || []
     const container = document.getElementById('cartListContainer');
-    container.innerHTML = ' ';
+    container.innerHTML = ` `;
 
     let totalToPay = 0;
 
     cartList.forEach(producto => {
-        const element = document.createElement('div')
-        element.classList.add('productoCarrito');
-        element.style.display = 'flex'
-        element.style.gap = '20px'
-        const totalProduct = producto.price * producto.cantidad;
-        totalToPay += totalProduct;
 
+        const element = document.createElement('div')
+        element.classList.add('productoCarrito', 'mt-4');
+        totalToPay += producto.cantidad * producto.price;
         element.innerHTML = `
-        <img src="${producto.imgUrl}">
-        <p> Nombre : ${producto.name}</p> 
-        <p> Cantidad : ${producto.cantidad}</p> 
-        <p> Precio Unitario : ${producto.price}</p> 
-        <p> Total : ${totalProduct}</p> 
+        <div class="flex md:grid md:grid-cols-2 gap-x-3">
+            <div class=" w-2/3 md:w-full  ">
+                <p class=" text-pantone mb-2 text-2xl md:text-4xl">${producto.name}</p>
+                <p class="mb-2">Cantidad: ${producto.cantidad}</p>
+                <p class="mb-2">Total: ${(producto.cantidad * producto.price).toFixed(2)} | ${producto.price} c/u </p>
+                <p class="mb-2">${producto.description}</p>
+                <button class="btnAñadir">
+                    <lord-icon src="https://cdn.lordicon.com/zrkkrrpl.json" trigger="hover"
+                        style="width:50px;height:50px" colors="primary:#0000,secondary:#ffc700">
+                    </lord-icon>
+                </button>
+                <button class="btnEliminar">
+                    <lord-icon src="https://cdn.lordicon.com/dykoqszm.json" trigger="hover"
+                        style="width:50px;height:50px" colors="primary:#0000,secondary:#ffc700">
+                    </lord-icon>
+                </button>
+            </div>
+            <div class=" flex justify-center items-center">
+                <img class=" w-44 h-44 md:w-48 md:h-48 " src="${producto.imgUrl}">
+            </div>
+        </div>
+        
         `
-        const btnEliminar = document.createElement('button');
-        btnEliminar.classList.add('btnEliminar');
+        const btnEliminar = element.querySelector('.btnEliminar');
         btnEliminar.addEventListener('click', () => {
             removeToCart(producto.id);
         })
-        const btnAdd = document.createElement('button');
-        btnAdd.classList.add('btnAñadir');
+        const btnAdd = element.querySelector('.btnAñadir');
         btnAdd.addEventListener('click', () => {
             addToCart(producto.id);
         })
-        btnAdd.textContent = '+';
-        btnEliminar.textContent = '-';
-        element.appendChild(btnAdd);
-        element.appendChild(btnEliminar);
+
         container.appendChild(element);
     })
-    document.getElementById('totalToPay').textContent = `${totalToPay}$`
+    document.getElementById('totalToPay').textContent = `${totalToPay.toFixed(2)}$`
 }
 
 function removeToCart(id) {

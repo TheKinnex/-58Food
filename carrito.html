@@ -8,24 +8,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <style>
-    .productResult img {
-        width: 200px;
-        height: auto;
+    #cartListContainer::-webkit-scrollbar {
+        width: 4px;
     }
 
-    .productResult {
-        margin-top: 20px;
-    }
-
-    img {
-        width: 200px;
-        height: auto;
+    #cartListContainer::-webkit-scrollbar-thumb {
+        background: #a88400;
+        width: 4px;
     }
 </style>
 
-<body>
-
+<body class="font-Futura text-white">
     <nav class=" bg-black/60 backdrop-blur-md fixed top-0 pt-2 w-full z-20">
         <div class=" container mx-auto max-w-7xl px-2 md:px-4 lg:px-6 w-full">
             <nav class=" relative flex justify-between px-2">
@@ -38,11 +33,11 @@
                 <div class="flex">
                     <div class=" flex justify-center items-center text-xl gap-8 text-white">
                         <a href="./index.html">
-                            Home
+                            Inicio
                         </a>
-                        <button id="showCart">
-                            Carrito
-                        </button>
+                        <a href="./menu.html">
+                            Menu
+                        </a>
                         <div id="navOptionAdmin" class=" hidden ">
                             <a href="./products.html">
                                 Panel
@@ -54,21 +49,32 @@
 
         </div>
     </nav>
-    
-    <h1>Carrito</h1>
-    <div id="cartList">
-        <div id="cartListContainer">
+    <main class="mt-24">
 
-        </div>
-        <p>Total a pagar <span id="totalToPay"></span></p>
-    </div>
-    <div id="">
-        <button>Seguir Comprando</button>
-        <a href="./pago.html">Pagar</a>
-        <button id="btnClearCart">Vaciar Carrito</button>
-    </div>
+        <section id="cartList" class=" bg-black">
+            <div class="pt-4 pb-4">
+                <h1 class=" text-pantone text-4xl font-semibold text-center">Carrito</h1>
+            </div>
+
+            <div id="cartListContainer" class="p-4 md:px-20 h-96 overflow-auto  ">
+
+            </div>
+        </section>
+
+        <section class=" py-2  bg-pantone_gunpowder  ">
+            <p class=" text-xl md:text-3xl text-pantone text-center">Total : <span class="text-white"
+                    id="totalToPay"></span></p>
+            <div class="text-pantone flex justify-center items-centers text-base md:text-2xl gap-2">
+                <a class=" px-2 py-1 bg-black rounded " href="./pago.html">Pagar</a>
+                <button class=" px-2 py-1 bg-black rounded ">Seguir Comprando</button>
+                <button class=" px-2 py-1 bg-black rounded " id="btnClearCart">Vaciar Carrito</button>
+            </div>
+        </section>
+    </main>
+
 </body>
 
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 <script src="./js/carrito.js"></script>
 
 </html>

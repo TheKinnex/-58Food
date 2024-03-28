@@ -27,7 +27,6 @@
         background: white;
         width: 1px;
     }
-
 </style>
 
 <body class="font-Futura">
@@ -44,14 +43,19 @@
                 <div class="flex">
                     <div class=" flex justify-center items-center text-xl gap-8 text-white">
                         <a href="./index.html">
-                            Home
+                            Inicio
                         </a>
                         <button id="showCart" class=" relative inline-block">
-                            Carrito 
-                            <div id="bubbleCartIcon" class="absolute -top-3 -right-4 bg-red-600 rounded-full p-3 hidden"></div>
-                            <span id="countProducts" class="absolute -top-[0.6rem] -right-2 text-sm  ">  </span>
+                            <lord-icon src="https://cdn.lordicon.com/pbrgppbb.json" trigger="click"
+                                colors="primary:#ffffff" style="width:30px;height:30px">
+                            </lord-icon>
+                            <div id="bubbleCartIcon"
+                                class="absolute -top-3 -right-3 bg-red-600 rounded-full p-3 hidden">
+                                <span id="countProducts" class="absolute top-0 bottom-0 left-0 right-0 text-sm  ">
+                                </span>
+                            </div>
+
                         </button>
-                        
                         <div id="navOptionAdmin" class=" hidden ">
                             <a href="./products.html">
                                 Panel
@@ -89,8 +93,10 @@
                 </div>
                 <p id="totalToPayText"></p>
                 <div class="pt-3 w-full flex items-center justify-center gap-5  ">
-                    <button id="btnPay" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Pagar Ahora</button>
-                    <button id="btnClear" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Limpiar Carrito</button>
+                    <a href="./carrito.html" id="btnPay" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Pagar
+                        Ahora</a>
+                    <button id="btnClear" class=" px-2 py-1 bg-pantone rounded text-black font-semibold"> Limpiar
+                        Carrito</button>
                 </div>
             </div>
         </div>
