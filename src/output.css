@@ -1012,12 +1012,24 @@ video {
   width: 7rem;
 }
 
+.w-32{
+  width: 8rem;
+}
+
+.w-36{
+  width: 9rem;
+}
+
 .w-44{
   width: 11rem;
 }
 
 .w-52{
   width: 13rem;
+}
+
+.w-64{
+  width: 16rem;
 }
 
 .w-80{
@@ -1046,22 +1058,6 @@ video {
 
 .w-screen{
   width: 100vw;
-}
-
-.w-32{
-  width: 8rem;
-}
-
-.w-64{
-  width: 16rem;
-}
-
-.w-40{
-  width: 10rem;
-}
-
-.w-36{
-  width: 9rem;
 }
 
 .max-w-7xl{
@@ -2629,10 +2625,6 @@ video {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
-.text-transparent{
-  color: transparent;
-}
-
 .underline{
   text-decoration-line: underline;
 }
@@ -3064,20 +3056,8 @@ video {
     margin-bottom: 0px;
   }
 
-  .md\:mt-10{
-    margin-top: 2.5rem;
-  }
-
-  .md\:mt-24{
-    margin-top: 6rem;
-  }
-
   .md\:mt-\[6\.5rem\]{
     margin-top: 6.5rem;
-  }
-
-  .md\:mt-\[6\.5\]{
-    margin-top: 6.5;
   }
 
   .md\:flex{
