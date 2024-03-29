@@ -27,6 +27,7 @@
         background: white;
         width: 1px;
     }
+
     img {
         width: 13rem;
         height: 13rem;
@@ -79,32 +80,34 @@
                 <input id="nameProduct" type="text" placeholder="Buscar producto por nombre / ID"
                     class="px-4 py-2 border rounded-md">
                 <button id="btnFind" class="px-4 py-2 bg-blue-500 text-white rounded-md ml-2">Buscar Producto</button>
+                <!-- Botón Crear Producto -->
+                <button id="btnOpenCreateProduct" class="px-4 py-2 bg-green-500 text-white rounded-md">Crear Producto</button>
             </div>
-    
-            <!-- Botón Crear Producto -->
-            <button id="btnOpenCreateProduct" class="px-4 py-2 bg-green-500 text-white rounded-md">Crear Producto</button>
+
         </section>
-    
+
         <section id="categoriesContainer" class=" max-w-full  ">
             <!--Title-->
             <div class="pt-4 pb-4">
                 <h1 class=" text-pantone text-4xl font-semibold text-center">Productos</h1>
             </div>
-    
+
             <div id="productListContainer">
-    
+
             </div>
-    
+
         </section>
-    
-    
+
+
         <!--Ventana emergente para editar producto -->
-        <div id="editProductModal" class=" md:mt-[6.5rem] fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
-    
+        <div id="editProductModal"
+            class=" md:mt-[6.5rem] fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+
         </div>
-    
+
         <!-- Ventana emergente para crear nuevo producto -->
-        <div id="createProductModal" class=" fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
+        <div id="createProductModal"
+            class=" fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center hidden">
             <div class="bg-white p-6 rounded-md max-w-lg md:mt-[6.5rem]">
                 <h2 class="text-lg font-semibold mb-4">Crear Nuevo Producto</h2>
                 <!-- Aquí va el formulario para crear nuevo producto -->
@@ -113,12 +116,12 @@
                         class="w-full px-4 py-2 border rounded-md mb-2">
                     <textarea id="newProductDescripcion" placeholder="Descripción"
                         class="w-full px-4 py-2 border rounded-md mb-2"></textarea>
-                    <div >
+                    <div>
                         <input type="file" id="newProductImgFile" accept="image/*"
-                        class="w-full px-4 py-2 border rounded-md mb-2">
-                    <div class="w-24">
-                        <img class="img" id="newProductImgPreview" class=" w-full h-full mb-2  object-scale-down">
-                    </div>
+                            class="w-full px-4 py-2 border rounded-md mb-2">
+                        <div class="w-24">
+                            <img class="img" id="newProductImgPreview" class=" w-full h-full mb-2  object-scale-down">
+                        </div>
                     </div>
                     <input type="number" id="newProductPrice" placeholder="Precio"
                         class="w-full px-4 py-2 border rounded-md mb-2">
@@ -132,7 +135,8 @@
                     </div>
                 </div>
                 <button id="btnNewProduct" class="px-4 py-2 bg-green-500 text-white rounded-md">Crear</button>
-                <button id="btnCloseCreateModal" class="px-4 py-2 bg-gray-500 text-white rounded-md ml-2">Cerrar</button>
+                <button id="btnCloseCreateModal"
+                    class="px-4 py-2 bg-gray-500 text-white rounded-md ml-2">Cerrar</button>
             </div>
         </div>
     </main>
