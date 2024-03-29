@@ -316,7 +316,7 @@ function editProduct(id) {
     const imgPreview = document.createElement('img');
     imgPreview.setAttribute('id', 'imgPreview');
     imgPreview.src = product.imgUrl;
-    imgPreview.classList.add('w-36', 'object-cover');
+    imgPreview.classList.add('w-36', 'object-scale-down');
 
 
     const categorySelect = form.querySelector('#editCategory');
