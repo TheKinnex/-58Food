@@ -281,7 +281,7 @@ function editProduct(id) {
 
     const form = document.createElement('div');
     form.innerHTML = `
-            <div class="bg-white p-6 rounded-md max-w-lg">
+            <div class="bg-white p-6 rounded-md max-w-lg mt-[6.5rem]">
                 <h2 class="text-lg font-semibold mb-4">Editar Producto</h2>
                     <!--Aquí va el formulario de edición de producto -->
                 <div>
