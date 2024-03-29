@@ -299,7 +299,10 @@ function editProduct(id) {
                     <div id="editCategoryInput">
                         <input id="newCategory" type="text" required class="w-full px-4 py-2 border rounded-md mb-2">
                     </div>
-                    <div class="" id="imgContainer"></div>
+                    <div class="" id="imgContainer">
+                        <div id="imgPreviewContainer" class="w-24 h-24 flex-shrink-0 ">
+                        </div>
+                    </div>
                 </div>
                 <button id="btnUpdateProduct" class="px-4 py-2 bg-blue-500 text-white rounded-md mt-4">Actualizar</button>
                 <button id="btnDeleteProduct" class="px-4 py-2 bg-red-500 text-white rounded-md mt-4">Eliminar Producto</button>
@@ -316,7 +319,7 @@ function editProduct(id) {
     const imgPreview = document.createElement('img');
     imgPreview.setAttribute('id', 'imgPreview');
     imgPreview.src = product.imgUrl;
-    imgPreview.classList.add('w-24');
+    imgPreview.classList.add('w-full', 'h-full', 'object-cover');
 
 
     const categorySelect = form.querySelector('#editCategory');
@@ -340,7 +343,7 @@ function editProduct(id) {
     container.insertBefore(form, container.firstChild);
     thisForm = form;
     document.getElementById('imgContainer').appendChild(imgFile);
-    document.getElementById('imgContainer').appendChild(imgPreview);
+    document.getElementById('imgPreviewContainer').appendChild(imgPreview);
 
     const btnUpdateProduct = document.getElementById('btnUpdateProduct');
 
