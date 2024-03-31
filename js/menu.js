@@ -1,5 +1,6 @@
 import { Producto } from "./classes.js";
 
+
 /*
 window.onload = () => {
     if (!JSON.parse(localStorage.getItem('usuario'))) {
@@ -12,7 +13,22 @@ window.onload = () => {
 }
 */
 
-//Mostramos las categorias con sus productos
+
+/* ============================================
+    LLAMADOS INICIADORES
+    ===========================================
+*/
+
+displayCartList()
+menuDisplay()
+
+
+/* ============================================
+    FUNCIONES DE MOSTRAR
+    ===========================================
+*/
+
+//Función para mostrar los productos en el menu divididos por sus categorias
 function menuDisplay() {
 
     const productList = JSON.parse(localStorage.getItem('productos')) || [
@@ -123,58 +139,7 @@ function menuDisplay() {
     localStorage.setItem('productos', JSON.stringify(productList));
 }
 
-function addToCart(id) {
-    let cartList = JSON.parse(localStorage.getItem('carrito')) || []
-    const productList = JSON.parse(localStorage.getItem('productos'))
-    let productoIn = cartList.findIndex(producto => producto.id === id);
-
-
-    if (productoIn !== -1) {
-        if (cartList[productoIn].cantidad < cartList[productoIn].stock) {
-            cartList[productoIn].cantidad++;
-            localStorage.setItem('carrito', JSON.stringify(cartList));
-        } else {
-            return;
-        }
-    } else {
-
-        const producto = productList.find(producto => producto.id === id);
-
-        if (producto && producto.stock > 0) {
-            cartList.push({ ...producto, cantidad: 1 });
-            localStorage.setItem('carrito', JSON.stringify(cartList));
-        } else {
-            console.error("No se consiguio el producto")
-            alert('No hay stock')
-        }
-    }
-    displayCartList();
-}
-
-function removeToCart(id) {
-    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
-    let index = cartList.findIndex(producto => producto.id === id);
-    if (index !== -1) {
-        if (cartList[index].cantidad > 1) {
-            cartList[index].cantidad--;
-        } else {
-            cartList.splice(index, 1);
-        }
-
-    } else {
-        alert("El producto no se encontro")
-    }
-    localStorage.setItem('carrito', JSON.stringify(cartList));
-    displayCartList();
-}
-
-function clearCart() {
-    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
-    cartList = [];
-    localStorage.setItem('carrito', JSON.stringify(cartList));
-    displayCartList();
-}
-
+//Función para mostrar los productos dentro del apartado carrito
 function displayCartList() {
     const cartPopupContainer = document.getElementById('cartPopupContainer');
     const cartList = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -214,12 +179,12 @@ function displayCartList() {
             element.classList.add('productoCarrito', 'mt-4');
             element.innerHTML = `
             <p class=" text-pantone">${producto.name}</p>
-            <p>Cantidad: ${producto.cantidad}</p>
-            <p>Total: ${(producto.price * producto.cantidad).toFixed(2)} | ${producto.price} c/u </p>
+            <p>Cantidad: ${producto.amount}</p>
+            <p>Total: ${(producto.price * producto.amount).toFixed(2)} | ${producto.price} c/u </p>
             `
 
-            totalToPay += (producto.price * producto.cantidad);
-            countProducts += producto.cantidad;
+            totalToPay += (producto.price * producto.amount);
+            countProducts += producto.amount;
 
             const btnEliminar = document.createElement('button');
             btnEliminar.classList.add('btnEliminar');
@@ -253,6 +218,7 @@ function displayCartList() {
 
 }
 
+//Función que muestra la cantidad de productos en el carrito
 function cartPopupDisplay() {
     const cartPopup = document.getElementById('cartPopup');
     displayCartList();
@@ -260,12 +226,73 @@ function cartPopupDisplay() {
     cartPopup.classList.add('block');
 }
 
+/* ============================================
+    FUNCIONES DEL MENU
+    ===========================================
+*/
+
+//Función que permite añadir un producto al carrito
+function addToCart(id) {
+    let cartList = JSON.parse(localStorage.getItem('carrito')) || []
+    const productList = JSON.parse(localStorage.getItem('productos'))
+    let productoIn = cartList.findIndex(producto => producto.id === id);
+
+
+    if (productoIn !== -1) {
+        if (cartList[productoIn].amount < cartList[productoIn].stock) {
+            cartList[productoIn].amount++;
+            localStorage.setItem('carrito', JSON.stringify(cartList));
+        } else {
+            return;
+        }
+    } else {
+
+        const producto = productList.find(producto => producto.id === id);
+
+        if (producto && producto.stock > 0) {
+            cartList.push({ ...producto, amount: 1 });
+            localStorage.setItem('carrito', JSON.stringify(cartList));
+        } else {
+            console.error("No se consiguio el producto")
+            alert('No hay stock')
+        }
+    }
+    displayCartList();
+}
+
+//Función que permite eliminar un producto del carrito
+function removeToCart(id) {
+    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
+    let index = cartList.findIndex(producto => producto.id === id);
+    if (index !== -1) {
+        if (cartList[index].amount > 1) {
+            cartList[index].amount--;
+        } else {
+            cartList.splice(index, 1);
+        }
+
+    } else {
+        alert("El producto no se encontro")
+    }
+    localStorage.setItem('carrito', JSON.stringify(cartList));
+    displayCartList();
+}
+
+//Función para eliminar todos los productos del carrito
+function clearCart() {
+    let cartList = JSON.parse(localStorage.getItem('carrito')) || [];
+    cartList = [];
+    localStorage.setItem('carrito', JSON.stringify(cartList));
+    displayCartList();
+}
+
+
+
+
+
 
 
 document.getElementById('cartPopupClose').addEventListener('click', () => {cartPopup.classList.add('hidden'); cartPopup.classList.remove('block');});
 document.getElementById('btnClear').addEventListener('click', () => {clearCart()});
 document.getElementById('showCart').addEventListener('click', () => { cartPopupDisplay() })
 
-//Mostramos siempre al iniciar la pagina el menu
-displayCartList()
-menuDisplay()

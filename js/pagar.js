@@ -1,6 +1,23 @@
-document.getElementById('btnPay').addEventListener('click', () => { pay() });
-displayAll()
 
+
+/* ============================================
+    LLAMADOS INICIADORES
+===========================================
+*/
+
+//Esperar llamado del btn para pagar
+document.getElementById('btnPay').addEventListener('click', () => { pay() });
+
+//Llamamos para mostrar todos los productos del carrito
+displayAll();
+
+
+/* ============================================
+    FUNCIONES DEL FORMULARIO
+===========================================
+*/
+
+//Funcion que comprueba los inputs, envia y guarda los datos de la compra o venta
 function pay() {
 
     let productList = JSON.parse(localStorage.getItem('productos'));
@@ -37,7 +54,7 @@ function pay() {
         id: '_' + Math.random().toString(30).substring(2),
         client: JSON.parse(localStorage.getItem('usuario')),
         total: totalPay(),
-        productList: purchasedProducts.map(p => ({producto: p.name, cantidad: p.cantidad, total: p.price * p.cantidad}))
+        productList: purchasedProducts.map(p => ({name: p.name, amount: p.amount, total: p.price * p.amount}))
     };
 
     payList.push(pay);
@@ -47,7 +64,7 @@ function pay() {
         console.log(product.stock + product.name)
         const index = productList.findIndex( item => item.id === p.id);
         if (product) {
-            product.stock = product.stock - p.cantidad;
+            product.stock = product.stock - p.amount;
             productList[index].stock = product.stock;
             localStorage.setItem('productos', JSON.stringify(productList));
         }
@@ -62,6 +79,17 @@ function pay() {
     location.replace('./index.html')
 }
 
+//Funcion que calcula el total a pagar
+function totalPay() {
+    let cartList = JSON.parse(localStorage.getItem('carrito'))
+    let t = 0;
+    cartList.forEach(p => {
+        t += p.price * p.amount;
+    })
+    return t.toFixed(2);
+}
+
+//Funcion que muestra todo los productos
 function displayAll() {
     const cartList = JSON.parse(localStorage.getItem('carrito')) || []
     const container = document.getElementById('cartListContainer');
@@ -73,15 +101,15 @@ function displayAll() {
 
         const element = document.createElement('div')
         element.classList.add('productoCarrito', 'mt-4');
-        totalToPay += producto.cantidad * producto.price;
+        totalToPay += producto.amount * producto.price;
         element.innerHTML = `
         <div class="border border-gray-300  p-5 mb-4 rounded flex justify-between items-center">
             <div>
                 <h3 class="text-pantone font-bold">${producto.name}</h3>
                 <p class=" pt-2 pb-1 text-white w-full md:w-96">${producto.description}</p>
                 <p class=" text-pantone font-semibold">Precio: <span class="text-white font-normal">$${producto.price} c/u</span></p>
-                <p class=" text-pantone font-semibold">Total: <span class="text-white font-normal">$${(producto.price * producto.cantidad).toFixed(2)}</span></p>
-                <p class=" text-pantone font-semibold">Cantidad: <span class="text-white font-normal">${producto.cantidad}</span></p>
+                <p class=" text-pantone font-semibold">Total: <span class="text-white font-normal">$${(producto.price * producto.amount).toFixed(2)}</span></p>
+                <p class=" text-pantone font-semibold">Cantidad: <span class="text-white font-normal">${producto.amount}</span></p>
             </div>
             <div>
                 <img class=" w-28 h-28 object-cover" src="${producto.imgUrl}" alt="">
@@ -93,11 +121,3 @@ function displayAll() {
     document.getElementById('totalToPay').textContent = `${totalToPay.toFixed(2)}$`
 }
 
-function totalPay() {
-        let cartList = JSON.parse(localStorage.getItem('carrito'))
-        let t = 0;
-        cartList.forEach(p => {
-            t += p.price * p.cantidad;
-        })
-        return t.toFixed(2);
-}
