@@ -166,11 +166,20 @@
                 </span>
             </a>
         </section>
+        <button id="2x">Reiniciar</button>
     </main>
 </body>
 
 
 <script src="./js/index.js">
+</script>
+
+<script>
+    
+    document.getElementById('2x').addEventListener('click', () => {
+        localStorage.clear();
+    })
+
 </script>
 
 </html>
