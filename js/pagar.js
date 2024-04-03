@@ -1,7 +1,7 @@
 
 document.getElementById('cardNumber').addEventListener('keydown', (e) => {
 
-    if (e.code === "Backspace" || e.code === "Delete" ) {
+    if (e.key === "Backspace" || e.key === "Delete" ) {
         return;
     }
 
@@ -17,7 +17,7 @@ document.getElementById('cardNumber').addEventListener('keydown', (e) => {
     } else if (longitud[0] === '5') {
         document.getElementById('logoMasterCard').classList.add('block')
         document.getElementById('logoMasterCard').classList.remove('hidden');
-    }   else if (longitud[0] === '3' && longitud[1] === '4' || longitud[1] === '7' ) {
+    }   else if (longitud[0] === '3' && (longitud[1] === '4' || longitud[1] === '7') ) {
         document.getElementById('logoAmex').classList.add('block')
         document.getElementById('logoAmex').classList.remove('hidden');
     }  else {
