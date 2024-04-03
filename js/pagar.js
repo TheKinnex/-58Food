@@ -1,9 +1,55 @@
 
+document.getElementById('cardNumber').addEventListener('keydown', (e) => {
+
+    if (e.code === "Backspace") {
+        return;
+    }
+
+    let longitud = e.target.value;
+
+    if (longitud.length == 4 || longitud.length == 9 || longitud.length == 14) {
+        e.target.value += ' ';
+    }
+
+    if (longitud[0] === '4') {
+        document.getElementById('logoVisa').classList.add('block');
+        document.getElementById('logoVisa').classList.remove('hidden');
+    } else if (longitud[0] === '5') {
+        document.getElementById('logoMasterCard').classList.add('block')
+        document.getElementById('logoMasterCard').classList.remove('hidden');
+    }   else if (longitud[0] === '3' && longitud[1] === '4' || longitud[1] === '7' ) {
+        document.getElementById('logoAmex').classList.add('block')
+        document.getElementById('logoAmex').classList.remove('hidden');
+    }  else {
+        document.getElementById('logoVisa').classList.remove('block');
+        document.getElementById('logoMasterCard').classList.remove('block')
+        document.getElementById('logoAmex').classList.remove('block')
+        document.getElementById('logoVisa').classList.add('hidden');
+        document.getElementById('logoAmex').classList.add('hidden');
+        document.getElementById('logoMasterCard').classList.add('hidden')
+    }
+
+})
+
+document.getElementById('expiry').addEventListener('keydown', (e) => {
+
+    if (e.code === "Backspace") {
+        return;
+    }
+
+    let longitud = e.target.value;
+
+    if (longitud.length == 2) {
+        e.target.value += '/';
+    }
+
+})
 
 /* ============================================
     LLAMADOS INICIADORES
 ===========================================
 */
+
 
 //Esperar llamado del btn para pagar
 document.getElementById('btnPay').addEventListener('click', () => { pay() });
@@ -23,8 +69,9 @@ function pay() {
     let productList = JSON.parse(localStorage.getItem('productos'));
     let cartList = JSON.parse(localStorage.getItem('carrito'))
 
-    const tdcInput = document.getElementById('tdc').value;
-    const nameInput = document.getElementById('name').value;
+    const tdcInput = document.getElementById('cardNumber').value.replace(/ /g, "");
+    
+    const nameInput = document.getElementById('holderName').value;
     const cvvInput = document.getElementById('cvv').value;
 
     //Regex

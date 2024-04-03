@@ -22,7 +22,8 @@ function displaySales() {
         containerSale.classList.add('text-xl', 'text-white',  'w-[45rem]', 'md:w-[75rem]', 'mb-12');
 
         const containerInfo = document.createElement('div');
-        containerInfo.classList.add('flex', 'justify-between', 'gap-12');
+        console.log('create')
+        containerInfo.classList.add('flex', 'justify-between', 'gap-12', 'w-max', 'px-4');
         containerInfo.innerHTML = `
             <p>${sale.id}</p>
             <p>${sale.client.name}</p>

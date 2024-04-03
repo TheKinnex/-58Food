@@ -68,20 +68,67 @@
                         </div>
                     </div>
 
-                    <!-- Sección de Datos de Tarjeta -->
-                    <div class=" flex flex-col justify-center items-center">
-                        <h2 class="text-3xl font-bold mb-4 text-pantone">Datos de Tarjeta</h2>
-                        <div class="border border-gray-300 p-4 rounded">
-                            <input type="text" placeholder="TDC" id="tdc"
-                                class="w-full p-2 mb-4 border border-gray-300 rounded">
-                            <input type="text" placeholder="Nombre y Apellido" id="name"
-                                class="w-full p-2 mb-4 border border-gray-300 rounded">
-                            <input type="text" placeholder="CVV" id="cvv"
-                                class="w-full p-2 mb-4 border border-gray-300 rounded">
+                    <!-- Seccion de Tarjeta -->
+                    <div class="flex flex-col justify-center items-center mb-3 md:mb-0">
+                        <div
+                            class=" flex flex-col items-start justify-end w-80 h-52  md:w-96  md:h-56 bg-[#1f1f1f] rounded-xl p-5 relative gap-4">
+                            <div class=" w-full flex items-center justify-end h-fit absolute top-0 left-0 p-5 ">
+                                <div class=" hidden " id="logoMasterCard">
+                                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="23" height="23"
+                                        viewBox="0 0 48 48" class="h-10 w-auto">
+                                        <path fill="#ff9800" d="M32 10A14 14 0 1 0 32 38A14 14 0 1 0 32 10Z"></path>
+                                        <path fill="#d50000" d="M16 10A14 14 0 1 0 16 38A14 14 0 1 0 16 10Z"></path>
+                                        <path fill="#ff3d00"
+                                            d="M18,24c0,4.755,2.376,8.95,6,11.48c3.624-2.53,6-6.725,6-11.48s-2.376-8.95-6-11.48 C20.376,15.05,18,19.245,18,24z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div id="logoVisa" class=" hidden ">
+                                    <img class="h-10 w-auto" src="https://cdn4.iconfinder.com/data/icons/flat-brand-logo-2/512/visa-512.png" alt="">
+                                </div>
+                                <div id="logoAmex" class=" hidden ">
+                                    <img class="h-14 w-auto" src="https://cdn2.iconfinder.com/data/icons/credit-cards-6/156/american_express-512.png" alt="">
+                                </div>
+                            </div>
+
+                            <div class="number-container w-full h-fit flex flex-col">
+                                <label class="input-label text-xs text-[#e2e2e2] w-full  " for="cardNumber">NUMERO DE
+                                    TARJETA</label>
+                                <input
+                                    class="inputstyle placeholder:text-white bg-transparent border-none outline-none text-white caret-red-400 text-base w-full h-9"
+                                    id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" name="cardNumber" maxlength="19"
+                                    type="text" />
+                            </div>
+
+                            <div class="name-date-cvv-container w-full h-6 flex gap-3">
+                                <div class="name-wrapper w-3/5 h-fit flex flex-col">
+                                    <label class="input-label text-xs text-[#e2e2e2] w-full  "
+                                        for="holderName">PROPIETARIO</label>
+                                    <input
+                                        class="inputstyle placeholder:text-white bg-transparent border-none outline-none text-white caret-red-400 text-base h-3"
+                                        id="holderName" placeholder="NOMBRE" type="text" />
+                                </div>
+
+                                <div class="expiry-wrapper w-[30%] h-fit flex flex-col">
+                                    <label class="input-label text-xs text-[#e2e2e2] w-full  "
+                                        for="expiry">FECHA</label>
+                                    <input
+                                        class="inputstyle placeholder:text-white bg-transparent border-none outline-none text-white caret-red-400 text-base h-3 w-full"
+                                        id="expiry" placeholder="MM/YY" type="text" maxlength="5" />
+                                </div>
+                                <div class="cvv-wrapper h-fit flex flex-col w-[10%]">
+                                    <label class="input-label text-xs text-[#e2e2e2] w-full  " for="cvv">CVV</label>
+                                    <input
+                                        class="inputstyle placeholder:text-white bg-transparent border-none outline-none text-white caret-red-400 text-sm h-3 w-full"
+                                        placeholder="***" maxlength="3" id="cvv" type="text" />
+                                </div>
+
+                            </div>
                             <button id="btnPay"
                                 class="w-full bg-pantone text-black font-bold py-2 px-4 rounded">Pagar</button>
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

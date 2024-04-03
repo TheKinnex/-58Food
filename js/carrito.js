@@ -1,7 +1,7 @@
 
 /*
 window.onload = () => {
-    if (!JSON.parse(localStorage.getItem('usuario'))) {
+    if (!JSON.parse(localStorage.getItem('usuario'))    ) {
         location.replace('./login.html')
     }
 
