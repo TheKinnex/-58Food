@@ -1,5 +1,5 @@
 
-document.getElementById('cardNumber').addEventListener('keydown', (e) => {
+document.getElementById('cardNumber').addEventListener('keypress', (e) => {
 
     if (e.key === "Backspace" || e.key === "Delete" ) {
         return;
@@ -31,7 +31,7 @@ document.getElementById('cardNumber').addEventListener('keydown', (e) => {
 
 })
 
-document.getElementById('expiry').addEventListener('keydown', (e) => {
+document.getElementById('expiry').addEventListener('keypress', (e) => {
 
     if (e.code === "Backspace") {
         return;
