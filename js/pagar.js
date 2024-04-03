@@ -1,7 +1,7 @@
 
 document.getElementById('cardNumber').addEventListener('keydown', (e) => {
 
-    if (e.code === "Backspace") {
+    if (e.code === "Backspace" || e.code === "Delete" ) {
         return;
     }
 
