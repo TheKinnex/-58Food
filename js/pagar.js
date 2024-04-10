@@ -1,6 +1,6 @@
 window.onload = () => {
     if (!JSON.parse(localStorage.getItem('usuario'))) {
-        location.replace('./login.html')
+        window.location.replace('./login.html')
     }
 
     const sesion = JSON.parse(localStorage.getItem('usuario'));
