@@ -43,16 +43,8 @@ document.getElementById('btnNavToggle').addEventListener('click', () => {
 
 document.getElementById('cardNumber').addEventListener('keydown', (e) => {
 
-    if (e.key === "Backspace" || e.key === "Delete" ) {
-        return;
-    }
 
     let longitud = e.target.value;
-
-    if (longitud.length == 4 || longitud.length == 9 || longitud.length == 14) {
-        e.target.value += ' ';
-    }
-
     if (longitud[0] === '4') {
         document.getElementById('logoVisa').classList.add('block');
         document.getElementById('logoVisa').classList.remove('hidden');
@@ -73,19 +65,6 @@ document.getElementById('cardNumber').addEventListener('keydown', (e) => {
 
 })
 
-document.getElementById('expiry').addEventListener('keydown', (e) => {
-
-    if (e.code === "Backspace") {
-        return;
-    }
-
-    let longitud = e.target.value;
-
-    if (longitud.length == 2) {
-        e.target.value += '/';
-    }
-
-})
 
 /* ============================================
     LLAMADOS INICIADORES
@@ -111,8 +90,8 @@ function pay() {
     let productList = JSON.parse(localStorage.getItem('productos'));
     let cartList = JSON.parse(localStorage.getItem('carrito'))
 
-    const tdcInput = document.getElementById('cardNumber').value.replace(/ /g, "");
-    const expiryInput = document.getElementById('expiry').value.replace("/", "");
+    const tdcInput = document.getElementById('cardNumber').value;
+    const expiryInput = document.getElementById('expiry').value;
     const nameInput = document.getElementById('holderName').value;
     const cvvInput = document.getElementById('cvv').value
 
