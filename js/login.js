@@ -10,16 +10,25 @@ btnLogin.addEventListener('click', () => {
     const password = document.getElementById('passwordInputL').value;
 
 
-    let clientListSave = JSON.parse(localStorage.getItem('clientes')) || [{ name: 'admin', password: 'admin', rol: 'admin' }]
+    let clientListSave = JSON.parse(localStorage.getItem('clientes')) || [{ name: 'admin' , password: 'admin', email: 'admin@gmail.com', phone: '00000000' , rol: 'admin' }];
 
-    const cliente = clientListSave.find( client => (client.name.toLowerCase() === name.toLowerCase() || client.email === name ) && client.password === password );
+    const cliente = clientListSave.find( client => (client.name === name || client.email === name ) && client.password === password );
+
+    if (!cliente) {
+        alert("Los datos son erroneos vuelva a intentarlo");
+        return;
+    } else {
+        localStorage.setItem('usuario', JSON.stringify(cliente));
+        alert("Ingresaste Correctamente!")
+        location.replace('./index.html');
+    }
 
     /*
     let f = new Date()
     f.setTime(f.getTime() + 60000);
     document.cookie = `usuario = ${JSON.stringify(cliente)} ; expires = ${f.toUTCString()}`;
     */
-    localStorage.setItem('usuario', JSON.stringify(cliente));
+    
 
 })
 

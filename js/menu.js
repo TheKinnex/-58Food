@@ -1,17 +1,50 @@
 import { Producto } from "./classes.js";
 
 
-/*
+
 window.onload = () => {
     if (!JSON.parse(localStorage.getItem('usuario'))) {
         location.replace('./login.html')
     }
 
-    if (JSON.parse(localStorage.getItem('usuario')).rol === 'admin') {
-        document.getElementById('navOptionAdmin').classList.remove('hidden')
+    const sesion = JSON.parse(localStorage.getItem('usuario'));
+
+    if (!sesion) {
+        return;
+    } else {
+        document.getElementById('navNoSesion').classList.add('hidden');
+        document.getElementById('navSesion').classList.remove('hidden');
+        document.getElementById('navDropDownNoSession').classList.add('hidden');
+        document.getElementById('navDropDownSession').classList.remove('hidden');
+        if (sesion.name === 'admin') {
+            document.getElementById('navAdminOption').classList.remove('hidden');
+            document.getElementById('navDropDownSessionAdmin').classList.remove('hidden');
+        }
     }
 }
-*/
+
+
+document.querySelectorAll('.logOut').forEach((e) => {
+    e.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        location.replace('./index.html');
+    })
+})
+
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
 
 
 /* ============================================
@@ -32,29 +65,32 @@ menuDisplay()
 function menuDisplay() {
 
     const productList = JSON.parse(localStorage.getItem('productos')) || [
-        // Hamburguesas
-        new Producto('Hamburguesa Clásica', 'Deliciosa hamburguesa con carne de res, lechuga, tomate y salsa especial', 'hamburguesa_clasica.jpg', 8.99, 20, 'Hamburguesas'),
-        new Producto('Hamburguesa BBQ', 'Hamburguesa con salsa BBQ, cebolla caramelizada y queso cheddar', 'hamburguesa_bbq.jpg', 9.99, 15, 'Hamburguesas'),
-        new Producto('Hamburguesa Vegetariana', 'Hamburguesa vegetariana con queso de cabra, espinacas y aguacate', 'hamburguesa_vegetariana.jpg', 7.99, 25, 'Hamburguesas'),
-        new Producto('Hamburguesa Doble', 'Hamburguesa doble con doble de carne, queso, tocino y salsa especial', 'hamburguesa_doble.jpg', 10.99, 18, 'Hamburguesas'),
-        new Producto('Hamburguesa de Pollo', 'Hamburguesa de pollo crujiente con lechuga, tomate y mayonesa', 'hamburguesa_pollo.jpg', 8.49, 22, 'Hamburguesas'),
-        new Producto('Hamburguesa Mexicana', 'Hamburguesa con guacamole, jalapeños, queso pepper jack y salsa picante', 'hamburguesa_mexicana.jpg', 9.49, 17, 'Hamburguesas'),
-        new Producto('Hamburguesa Hawaiana', 'Hamburguesa con piña a la parrilla, jamón, queso suizo y salsa de mango', 'hamburguesa_hawaiana.jpg', 9.99, 20, 'Hamburguesas'),
-        new Producto('Hamburguesa de Pescado', 'Hamburguesa de pescado empanizado con aderezo tártaro y lechuga', 'hamburguesa_pescado.jpg', 9.99, 14, 'Hamburguesas'),
-        new Producto('Hamburguesa de Camarones', 'Hamburguesa de camarones a la parrilla con aguacate y salsa de chipotle', 'hamburguesa_camarones.jpg', 11.99, 12, 'Hamburguesas'),
-        new Producto('Hamburguesa de Ternera', 'Hamburguesa gourmet con carne de ternera, queso brie y cebolla caramelizada', 'hamburguesa_ternera.jpg', 10.99, 16, 'Hamburguesas'),
+	
+        //Entradas
+        new Producto('Trigología de Patacones', 'Deliciosos patacones en presentacion mini cestas, rellenos de pollo mechado con chisps de ajo, pernil mechado con salsa de queso y ensalada rayada con piña.', './img/products/DSC06401.jpg', 5, 20, 'PARA COMPARTIR'),
+        new Producto('Trigología de Arepas', 'Presentación de 3 mini arepas, rellenas de Carne Mechada, Pollo, Pernil. Acompañadas de salsa de la casa.', './img/products/DSC06464.jpg', 4, 15, 'PARA COMPARTIR'),
+        new Producto('Trigología de Empanadas', 'Mini empanadas hechas de harina de maíz, rellenas de platano con queso blanco, pollo mechado y caraotas con queso blanco. Acompañadas de salsa de la casa.', './img/products/DSC06430.jpg', 2, 30, 'PARA COMPARTIR'),
+        new Producto('Trigología de Tequeños', '6 deliciosos deditos de queso, forrados con harina de trigo, fritos; acompañados con salsa tártara.', './img/products/DSC06358.jpg', 3.7, 20, 'PARA COMPARTIR'),
+        new Producto('Trigología de la Trigología', 'Donde puedes combinar 3 de nuestras trilogías (trilogías de patacones, empanadas, arepas o tequeños)', './img/products/DSC06478.jpg', 8, 25, 'PARA COMPARTIR'),
+    
+        //Ensaladas
+        new Producto('Ensalda Quinoa', 'Deliciosa y fresca mezcla de Quinoa, tomate, pimenton rojo, verde y amarillo, zanahorias, aceitunas negras, cebolla morada, cilantro y queso palmita, coronado con finas rodajas de aguacate.', './img/products/DSC06741.jpg', 5.28, 15, 'Ensaldas'),
+        new Producto('Ensalda Cesar', 'Delicioso mix de lechugas frescas, acompañada de crujientes crutones de pan, queso parmesano, tocino en trozos y pollo en tiras. Acompañado de nuestro delicioso aderezo cesar de la casa.', './img/products/DSC06711.jpg', 5.49, 25, 'Ensaldas'),
+        new Producto('Ensalda de Atún', 'Delicioso mix de lechugas, con tomate cherry, heuvo duro, queso palmita, croquetas de atún, acompañada con exquisita vinagreta de la casa.', './img/products/DSC06770.jpg', 6, 35, 'Ensaldas'),
+        new Producto('Ensalda de Berro', 'Fresco y delicioso mix de berro, con tomate cherry, queso palmito, mango, aguacate y semilla de maravilla, con su delicioso aderezo de maracuyá.', './img/products/DSC06743.jpg', 5.28, 8, 'Ensaldas'),
 
-        // Entradas
-        new Producto('Aros de Cebolla', 'Aros de cebolla crujientes acompañados de salsa BBQ', 'aros_cebolla.jpg', 5.99, 30, 'Entradas'),
-        new Producto('Papas Fritas', 'Papas fritas con sal y condimentos, acompañadas de kétchup y mayonesa', 'papas_fritas.jpg', 4.99, 35, 'Entradas'),
-        new Producto('Palitos de Queso', 'Palitos de queso mozzarella empanizados y fritos, con salsa marinara', 'palitos_queso.jpg', 6.99, 25, 'Entradas'),
-        new Producto('Alitas de Pollo', 'Alitas de pollo crujientes con salsa picante y aderezo ranch', 'alitas_pollo.jpg', 8.99, 20, 'Entradas'),
-        new Producto('Nachos Supreme', 'Nachos cubiertos con carne de res, queso, jalapeños, guacamole y crema agria', 'nachos_supreme.jpg', 9.99, 18, 'Entradas'),
-        new Producto('Rollitos de Primavera', 'Rollitos de primavera rellenos de vegetales, acompañados de salsa agridulce', 'rollitos_primavera.jpg', 7.49, 22, 'Entradas'),
-        new Producto('Quesadillas', 'Quesadillas de pollo o carne asada con queso cheddar derretido, servidas con guacamole y salsa', 'quesadillas.jpg', 8.49, 25, 'Entradas'),
-        new Producto('Tacos de Camarón', 'Tacos de camarón al estilo Baja, servidos con repollo, salsa de cilantro y lima', 'tacos_camaron.jpg', 10.49, 20, 'Entradas'),
-        new Producto('Ensalada César', 'Ensalada fresca con pollo a la parrilla, crutones, queso parmesano y aderezo César', 'ensalada_cesar.jpg', 7.99, 28, 'Entradas'),
-        new Producto('Sopa de Tortilla', 'Sopa caliente de pollo, tomate, tortilla crujiente, aguacate y queso', 'sopa_tortilla.jpg', 6.99, 30, 'Entradas')
+        //Sandwiches
+        new Producto('Sándwich Mechada', 'Suculento sándwich armado en pan francés artesanal, relleno de carne mechada, tomate frescom huevo frito y queso palmita, aderezado con salsa a base de carne. Acompañado con papas fritas de la casa.', './img/products/DSC06856.jpg', 6, 45, 'Sándwiches'),
+        new Producto('Sándwich +58 FooD', 'Delicioso sándwich armado en pan de brioche de la casa, relleno de pernil, queso gouda, jamón, pepinillo, aderezado con salsa de la casa y mostaza. Acompañado con papas fritas de la casa.', './img/products/DSC06937.jpg', 6.35, 30, 'Sándwiches'),
+        new Producto('Sándwich Caprese', 'Exquisito sándwich armado en pan de campo de la casa, relleno de queso mozzarella, tomate, aderezado con pesto. Acompañado de papas fritas de la casa.', './img/products/DSC06891.jpg', 6.35, 14, 'Sándwiches'),
+        new Producto('Sándwich Club House', 'Contundente sándwich presentado en pan de molde de la casa, relleno de milanesas de pollo, tomate, lechuga, huevo frito, jamón y queso gouda. Acompañado de papas fritas.', './img/products/DSC06911.jpg', 5.79, 54, 'Sándwiches'),
+
+
+        //Hamburguesas 
+        new Producto('Hamburguesa Americana', '180 grs de deliciosa carne de la casa, tocino, queso cheddar, rodajas de tomate, cebolla morada, pepinillo, y lechuga. ', './img/products/DSC06619.jpg', 6.68, 24, 'Hamburguesas'),
+        new Producto('Hamburguesa a lo Pobre ', '180 grs de deliciosa carne de la casa, acompañada con cebolla estofada y coranada con un huevo frito.', './img/products/DSC06605.jpg', 5.79, 18, 'Hamburguesas'),
+        new Producto('Hamburguesa +58 FooD', '250 grs de deliciosa carne de la casa, acompañada con huevo frito, queso palmita, rodajas de tomate, cebolla encurtida, pepinillos y lechugas. Acompañada de salsa de queso de la casa.', './img/products/DSC06631.jpg', 6.68, 24, 'Hamburguesas'),
+        new Producto('Hamburguesa BBQ', '180 grs de deliciosa carne de la casa, tocino, champiñones, queso cheddar, cebolla caramelizada, aderezada con una deliciosa salsa barbecue.', './img/products/DSC06632.jpg', 6.3, 24, 'Hamburguesas'),
 
     ];
 
@@ -102,7 +138,7 @@ function menuDisplay() {
                 const productoElement = document.createElement('div');
 
                 //Añadimos estilos
-                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[28rem]');
+                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[32rem]');
 
                 //Creamos el btn para añadir al carrito
                 const btnAdd = document.createElement('button');
@@ -120,7 +156,7 @@ function menuDisplay() {
                     <img class=" w-full h-full object-cover" src="${producto.imgUrl}" alt="">
                 </div>
                 <h3 class="mb-2 mt-2 text-pantone ">${producto.name}</h3>
-                <p class="mb-2 w-52">${producto.description}</p>
+                <p class="text-sm mb-2 w-52">${producto.description}</p>
                 <p><span class="text-pantone">Precio:</span> $${producto.price}</p>
                 <p><span class="text-pantone">Stock:</span> ${producto.stock}</p>
 
@@ -154,17 +190,24 @@ function displayCartList() {
         <h2 class=" text-3xl"> El Carrito Esta Vacio</h2>  
         </div>
         `
-        document.getElementById('countProducts').textContent = ` `;
+
+        document.querySelectorAll('.countProducts').forEach(e => {
+            e.textContent = ` `;
+        })
+
         document.getElementById('totalToPayText').textContent = `Total a Pagar: $${totalToPay.toFixed(2)}`;
 
-
-        document.getElementById('bubbleCartIcon').classList.add('hidden')
+        document.querySelectorAll('.bubbleCartIcon').forEach(e => {
+            e.classList.add('hidden');
+        })
         document.getElementById('btnPay').classList.add('hidden');
         document.getElementById('btnClear').classList.add('hidden');
     } else {
 
-        document.getElementById('bubbleCartIcon').classList.remove('hidden');
-        document.getElementById('bubbleCartIcon').classList.add('block');
+        document.querySelectorAll('.bubbleCartIcon').forEach( e => {
+            e.classList.remove('hidden');
+            e.classList.add('block')
+        })
 
         document.getElementById('btnClear').classList.remove('hidden');
         document.getElementById('btnClear').classList.add('block');
@@ -212,7 +255,9 @@ function displayCartList() {
             
         })
 
-        document.getElementById('countProducts').textContent = `${countProducts}`;
+        document.querySelectorAll('.countProducts').forEach(e => {
+            e.textContent = `${countProducts}`;
+        })
         document.getElementById('totalToPayText').textContent = `Total a Pagar: $${totalToPay.toFixed(2)}`;
     }
 
@@ -294,5 +339,9 @@ function clearCart() {
 
 document.getElementById('cartPopupClose').addEventListener('click', () => {cartPopup.classList.add('hidden'); cartPopup.classList.remove('block');});
 document.getElementById('btnClear').addEventListener('click', () => {clearCart()});
-document.getElementById('showCart').addEventListener('click', () => { cartPopupDisplay() })
+
+document.querySelectorAll('.showCart').forEach(e => {
+    e.addEventListener('click', () => { cartPopupDisplay() })
+})
+
 

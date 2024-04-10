@@ -21,36 +21,15 @@
                     </a>
                 </div>
 
-                <!--Btn Hamburguesa-->
-                <div class=" flex lg:hidden ">
-                    <div class=" flex justify-center items-center gap-x-2 text-sm">
-                        <button id="btnNavToggle">
-                            <img class="w-10" src="" alt="">
-                        </button>
-                    </div>
-                </div>
+
             </nav>
 
         </div>
 
-        <!--Menu desplegable-->
-        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
-            <ul class="text-lg">
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="#">Home</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./login.html">Iniciar Sesion</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./register.html">Registrarse</a>
-                </li>
-            </ul>
-        </div>
     </nav>
 
     <main class="mt-24">
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-96">
+        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-full">
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="nameInputL">
                     Nombre / Correo
@@ -73,6 +52,11 @@
                     type="button" id="btnLogin">
                     Iniciar sesión
                 </button>
+                <a
+                class=" text-blue-500 font-bold text-xs py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                href="./register.html">
+                No tienes cuenta?
+            </a >
             </div>
         </div>
     </main>

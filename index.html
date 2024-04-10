@@ -27,37 +27,55 @@
                 </div>
 
                 <div class="lg:flex lg:justify-center hidden lg:block">
-                    <ul id="navNoSesion" class="text-lg flex justify-center items-center gap-20 text-white">
-                        <li >
-                            <a  href="#">Inicio</a>
-                        </li>
-                        <li >
-                            <a href="./login.html">Iniciar Sesion</a>
-                        </li>
-                        <li >
-                            <a href="./register.html">Registrarse</a>
-                        </li>
-                    </ul>
-                    <!--Sesion Iniciada-->
-                    <ul id="navSesion" class="text-lg flex justify-center items-center gap-20 text-white hidden">
-                        <li class="">
-                            <a href="#">Inicio</a>
-                        </li>
-                        <li class="">
-                            <a href="./login.html">Iniciar Sesion</a>
-                        </li>
-                        <li class="">
-                            <a href="./register.html">Registrarse</a>
-                        </li>
+                    <ul class="text-lg flex text-white">
+                        <div id="navNoSesion" class=" flex justify-center items-center gap-20 ">
+                            <li>
+                                <a href="./index.html">Inicio</a>
+                            </li>
+                            <li>
+                                <a href="./login.html">Iniciar Sesion</a>
+                            </li>
+                            <li>
+                                <a href="./register.html">Registrarse</a>
+                            </li>
+                        </div>
+                        <div id="navSesion" class=" flex justify-center items-center gap-20 hidden">
+                            <li>
+                                <a href="./index.html">Inicio</a>
+                            </li>
+                            <li>
+                                <a href="./menu.html">Menú</a>
+                            </li>
+                            <li>
+                                <a href="./carrito.html">Carrito</a>
+                            </li>
+                            <li id="navAdminOption" class=" hidden">
+                                <a href="./dashboard.html">Panel</a>
+                            </li>
+                            <li>
+                                <button class="logOut">Cerrar Sesión</button>
+                            </li>
+                        </div>
                     </ul>
                 </div>
-
 
                 <!--Btn Hamburguesa-->
                 <div class=" flex lg:hidden ">
                     <div class=" flex justify-center items-center gap-x-2 text-sm">
                         <button id="btnNavToggle">
-                            <img class="w-10" src="https://cdn-icons-png.flaticon.com/512/4254/4254068.png" alt="">
+                            <svg class="w-10" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100"
+                                height="100" viewBox="0,0,256,256">
+                                <g fill="#ffc700" fill-rule="nonzero" stroke="none" stroke-width="1"
+                                    stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10"
+                                    stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none"
+                                    font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+                                    <g transform="scale(5.12,5.12)">
+                                        <path
+                                            d="M5,8c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,23c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175zM5,38c-0.72127,-0.0102 -1.39216,0.36875 -1.75578,0.99175c-0.36361,0.623 -0.36361,1.39351 0,2.01651c0.36361,0.623 1.0345,1.00195 1.75578,0.99175h40c0.72127,0.0102 1.39216,-0.36875 1.75578,-0.99175c0.36361,-0.623 0.36361,-1.39351 0,-2.01651c-0.36361,-0.623 -1.0345,-1.00195 -1.75578,-0.99175z">
+                                        </path>
+                                    </g>
+                                </g>
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -67,17 +85,39 @@
 
         <!--Menu desplegable-->
         <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
-            <ul class="text-lg">
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="#">Home</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./login.html">Iniciar Sesion</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./register.html">Registrarse</a>
-                </li>
-            </ul>
+            <div id="navDropDownNoSession">
+                <ul class="text-lg md:text-2xl">
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./index.html">Inicio</a>
+                    </li>
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./login.html">Iniciar Sesion</a>
+                    </li>
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./register.html">Registrarse</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="navDropDownSession" class="hidden">
+                <ul class="text-lg md:text-2xl">
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./index.html">Inicio</a>
+                    </li>
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./menu.html">Menú</a>
+                    </li>
+                    <li class=" pl-2 border border-solid border-gray-500">
+                        <a href="./carrito.html">Carrito</a>
+                    </li>
+                    <li id="navDropDownSessionAdmin" class=" pl-2 border border-solid border-gray-500 hidden">
+                        <a href="./dashboard.html">Panel</a>
+                    </li>
+                    <li>
+                        <button class="logOut pl-2 border border-solid border-gray-500 w-full text-start">Cerrar
+                            Sesión</button>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 
@@ -112,7 +152,7 @@
                         Nunca habia sido tan facil pedir para tu casa.
                     </p>
                     <div class="mt-10 text-2xl lg:text-3xl p-3 mx-8 bg-pantone text-black font-semibold rounded ">
-                        <a href="./menu.html" >
+                        <a href="./menu.html">
                             <span>Pedir Ahora</span>
                         </a>
                     </div>
@@ -123,15 +163,14 @@
         </section>
 
         <!-- Who we are?-->
-        <section id="nosotros" class="mx-auto max-w-full px-4  pb-6 pt-8 bg-pantone_gunpowder">
+        <section id="nosotros" class="flex flex-col justify-center items-center mx-auto max-w-full px-4  pb-6 pt-8 bg-pantone_gunpowder">
 
             <h2 data-aos="fade-up" class=" text-center text-4xl md:text-5xl font-bold mb-12 text-pantone">
                 ¿Quienes Somos?
             </h2>
 
-            <div data-aos="fade-up" class="grid h-auto mb-16 w-full bg-white rounded-lg p-5 ">
+            <div data-aos="fade-up" class="  w-[32rem] grid h-auto mb-1 text-white rounded-lg p-5 ">
                 <div class="w-full">
-                    <h3 class=" text-[#7814d7] text-center mb-8 text-4xl font-medium">¡Te simplificamos la Vida!</h3>
                     <p class=" text-center text-lg ">
                         Envía todas tus remesas familiares, sin complicaciones, desde cualquier parte del mundo, desde
                         la
@@ -139,75 +178,118 @@
                         el menor tiempo posible.
                     </p>
                 </div>
-                <div class="w-full">
-                    <img class="hidden lg:block rounded-3xl" width="600px" height="100px"
-                        src="https://www.eude.es/wp-content/uploads/2018/05/Dise%C3%B1o-sin-t%C3%ADtulo-2021-05-11T165120.480.png"
-                        alt="">
-                </div>
-
             </div>
         </section>
 
         <!-- Carrusel -->
-        <section class="mx-auto max-w-full  container relative ">
+        <section class="mx-auto max-w-full bg-pantone_gunpowder pb-9 container relative ">
 
-            <div class="relative overflow-hidden">
+            <div class="relative overflow-hidden flex lg:mx-12   justify-center items-center">
                 <div id="carousel" class="flex transition-transform duration-300 h-56 md:h-[26rem] lg:h-[34rem]">
-                    <div class="w-screen flex-shrink-0 ">
+                    <div class="w-full flex-shrink-0 ">
                         <img src="./img/DSC06660.jpg" alt="Image 1" class="w-full h-full object-cover object-center ">
                     </div>
-                    <div class="w-screen flex-shrink-0">
+                    <div class="w-full flex-shrink-0">
                         <img src="./img/DSC06464.jpg" alt="Image 2" class="w-full h-full object-cover object-center">
                     </div>
-                    <div class="w-screen flex-shrink-0">
+                    <div class="w-full flex-shrink-0">
                         <img src="./img/DSC06358.jpg" alt="Image 3" class="w-full h-full object-cover object-center">
                     </div>
-                    <div class="w-screen flex-shrink-0">
+                    <div class="w-full flex-shrink-0">
                         <img src="./img/DSC06707.jpg" alt="Image 4" class="w-full h-full object-cover object-center">
                     </div>
-                    <div class="w-screen flex-shrink-0">
+                    <div class="w-full flex-shrink-0">
                         <img src="./img/DSC07124.jpg" alt="Image 5" class="w-full h-full object-cover object-center">
                     </div>
                 </div>
+                <div class=" absolute top-0 left-0 right-0 bottom-0 w-full text-center ">
+                    <h2>
+                        <span class="text-4xl md:text-6xl font-semibold text-black text-center"
+                            style="text-shadow: 2px 2px 2px white;">
+                            Los favoritos
+                        </span>
+                    </h2>
+                </div>
+
                 <button id="prevBtn"
-                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md z-20">
+                    class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 mx-5 py-2 rounded-full shadow-md text-2xl lg:text-4xl z-20">
                     < </button>
                         <button id="nextBtn"
-                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 py-2 rounded-full shadow-md z-20">
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-700 bg-opacity-50 text-white px-4 mx-5 py-2 rounded-full text-2xl lg:text-4xl shadow-md z-20">
                             >
                         </button>
 
+
+                        <a href="./menu.html"
+                            class="absolute left-1/2 py-1 px-3 md:py-2 md:px-4 rounded right-0 bottom-4 w-full bg-black text-pantone -translate-x-1/2 flex justify-center">
+                            <span class=" text-2xl md:text-4xl font-semibold ">
+                                Pedir
+                            </span>
+                        </a>
+
             </div>
 
-            <div class=" absolute top-0 left-0 right-0 bottom-0 w-full text-center ">
-                <h2>
-                    <span class="text-4xl md:text-6xl font-semibold text-black text-center"
-                        style="text-shadow: 1px 1px 1px white;">
-                        Los favoritos
-                    </span>
-                </h2>
-            </div>
-            <a href="./menu.html" class="absolute left-1/2 py-1 px-3 md:py-2 md:px-4 rounded right-0 bottom-4 w-full bg-black text-pantone -translate-x-1/2 flex justify-center">
-                <span class=" text-2xl md:text-4xl font-semibold ">
-                    Pedir
-                </span>
-            </a>
+
         </section>
-        <button id="2x">Reiniciar</button>
     </main>
-    
+
+    <footer class="w-full mx-auto rounded-t-3xl text-gray-500 backdrop-blur-md bg-white">
+        <div
+            class="flex gap-x-20 lg:gap-x-44 justify-between mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-6 pt-9 lg:pt-16  ">
+
+            <div class=" order-1 max-w-96 md:max-w-64">
+                <h2 class="text-black font-semibold text-lg">Sobre Nosotros</h2>
+                <p class=" text-sm mt-4">
+                    Somos la mejor y grande opción para comer rico, y tengas una gran antención 
+                    en pleno centro de santiago estando a tu disposición.
+                </p>
+
+            </div>
+            <div class="hidden md:block order-3 max-w-96 md:max-w-64">
+                <h2 class="text-black font-semibold text-lg">Contacto</h2>
+                <div class=" flex flex-col text-sm mt-4 gap-y-5">
+                    <p>Av. Alameda 75, Santiago, Región Metropolitana Chile.</p>
+                    <p class="flex items-center gap-x-4">
+
+                        <span class=" max-w-52">
+                            info@+58FooD.com
+                        </span>
+                    </p>
+                    <p class="flex items-center gap-x-4">
+
+                        <span class=" max-w-52">
+                            +56 9 4585 9666
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-10 ">
+            <div class=" border-t-2 border-gray-400 mt-3 flex gap-x-4 justify-center pt-6 lg:pt-7 items-center ">
+                <a class=" w-9 rounded-full" target="_blank" href="https://www.facebook.com/ESTUPAGO?mibextid=PlNXYD">
+                    <img width="" src="" alt="">
+                </a>
+                <a class=" w-9 rounded-full" target="_blank"
+                    href="https://www.instagram.com/estupago?igsh=emZmcmZ6OGRsbWUy">
+                    <img width="" src="" alt="">
+                </a>
+                <a class=" w-7 rounded-full" target="_blank"
+                    href="https://x.com/estupago?s=11&t=wvtmueQVQCfrgJUjI6CwUw">
+                    <img width="" src="" alt="">
+                </a>
+            </div>
+            <div class=" mt-6 text-black text-xs text-center flex flex-col">
+                Copyright © 2024 +58FooD.com
+                <button id="resetLocalStorage" class=" text-red-600"> Reiniciar Datos</button>
+            </div>
+        </div>
+    </footer>
+
 </body>
 
 
 <script src="./js/index.js">
 </script>
 
-<script>
-    
-    document.getElementById('2x').addEventListener('click', () => {
-        localStorage.clear();
-    })
-
-</script>
 
 </html>

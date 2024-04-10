@@ -1,4 +1,47 @@
 
+window.onload = () => {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
+        document.body.innerHTML = ` `;
+        location.replace('./login.html');
+    }
+
+    const sesion = JSON.parse(localStorage.getItem('usuario'));
+
+    if (!sesion) {
+        return;
+    } else {
+        document.getElementById('navNoSesion').classList.add('hidden');
+        document.getElementById('navSesion').classList.remove('hidden');
+        document.getElementById('navDropDownNoSession').classList.add('hidden');
+        document.getElementById('navDropDownSession').classList.remove('hidden');
+        if (sesion.name === 'admin') {
+            document.getElementById('navAdminOption').classList.remove('hidden');
+            document.getElementById('navDropDownSessionAdmin').classList.remove('hidden');
+        }
+    }
+}
+
+document.querySelectorAll('.logOut').forEach((e) => {
+    e.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        location.replace('./index.html');
+    })
+})
+
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
 
 displaySales();
 

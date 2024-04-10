@@ -1,5 +1,50 @@
 import { Producto } from "./classes.js";
 
+
+window.onload = () => {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
+        document.body.innerHTML = ` `;
+        location.replace('./login.html');
+    }
+
+    const sesion = JSON.parse(localStorage.getItem('usuario'));
+
+    if (!sesion) {
+        return;
+    } else {
+        document.getElementById('navNoSesion').classList.add('hidden');
+        document.getElementById('navSesion').classList.remove('hidden');
+        document.getElementById('navDropDownNoSession').classList.add('hidden');
+        document.getElementById('navDropDownSession').classList.remove('hidden');
+        if (sesion.name === 'admin') {
+            document.getElementById('navAdminOption').classList.remove('hidden');
+            document.getElementById('navDropDownSessionAdmin').classList.remove('hidden');
+        }
+    }
+}
+
+document.querySelectorAll('.logOut').forEach((e) => {
+    e.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        location.replace('./index.html');
+    })
+})
+
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
+
 handleCategories();
 displayProduct();
 
@@ -219,7 +264,7 @@ function displayProduct(res) {
                 const productoElement = document.createElement('div');
 
                 //Añadimos estilos
-                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[28rem]');
+                productoElement.classList.add('relative', 'bg-pantone_gunpowder', 'producto', 'text-white', 'h-[32rem]');
 
                 //Creamos el btn para añadir al carrito
                 const btnEditProduct = document.createElement('button');
@@ -238,7 +283,7 @@ function displayProduct(res) {
                     <img class=" w-full h-full object-cover" src="${producto.imgUrl}" alt="">
                 </div>
                 <h3 class="mb-2 mt-2 text-pantone ">${producto.name}</h3>
-                <p class="mb-2 w-52">${producto.description}</p>
+                <p class="text-sm mb-2 w-52">${producto.description}</p>
                 <p><span class="text-pantone">Precio:</span> $${producto.price}</p>
                 <p><span class="text-pantone">Stock:</span> ${producto.stock}</p>
 

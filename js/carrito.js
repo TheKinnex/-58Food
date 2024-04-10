@@ -1,15 +1,45 @@
-
-/*
 window.onload = () => {
-    if (!JSON.parse(localStorage.getItem('usuario'))    ) {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
         location.replace('./login.html')
     }
 
-    if (JSON.parse(localStorage.getItem('usuario')).rol === 'admin') {
-        document.getElementById('navOptionAdmin').classList.remove('hidden')
+    const sesion = JSON.parse(localStorage.getItem('usuario'));
+    if (!sesion) {
+        return;
+    } else {
+        document.getElementById('navNoSesion').classList.add('hidden');
+        document.getElementById('navSesion').classList.remove('hidden');
+        document.getElementById('navDropDownNoSession').classList.add('hidden');
+        document.getElementById('navDropDownSession').classList.remove('hidden');
+        if (sesion.name === 'admin') {
+            document.getElementById('navAdminOption').classList.remove('hidden');
+            document.getElementById('navDropDownSessionAdmin').classList.remove('hidden');
+        }
     }
+
 }
-*/
+
+document.querySelectorAll('.logOut').forEach((e) => {
+    e.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        location.replace('./index.html');
+    })
+})
+
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
 
 /* ============================================
     LLAMADOS INICIADORES
@@ -22,6 +52,16 @@ cartDisplay()
 //Estar pendiente al llamado del btn para limpiar el carrito
 document.getElementById('btnClearCart').addEventListener('click', () => {clearCart()})
 
+//Revisamos que hay productos en el carrito para ir a pagar
+document.getElementById('btnPay').addEventListener('click', () => {
+    const cartList = JSON.parse(localStorage.getItem('carrito')) || []
+    if (cartList.length == 0) {
+        alert("No hay productos que pagar");
+        return;
+    } else {
+        location.replace('./pago.html')
+    }
+})
 
 /* ============================================
     LLAMADOS PARA MOSTRAR

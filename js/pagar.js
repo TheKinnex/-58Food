@@ -1,3 +1,45 @@
+window.onload = () => {
+    if (!JSON.parse(localStorage.getItem('usuario'))) {
+        location.replace('./login.html')
+    }
+
+    const sesion = JSON.parse(localStorage.getItem('usuario'));
+
+    if (!sesion) {
+        return;
+    } else {
+        document.getElementById('navNoSesion').classList.add('hidden');
+        document.getElementById('navSesion').classList.remove('hidden');
+        document.getElementById('navDropDownNoSession').classList.add('hidden');
+        document.getElementById('navDropDownSession').classList.remove('hidden');
+        if (sesion.name === 'admin') {
+            document.getElementById('navAdminOption').classList.remove('hidden');
+            document.getElementById('navDropDownSessionAdmin').classList.remove('hidden');
+        }
+    }
+}
+
+document.querySelectorAll('.logOut').forEach((e) => {
+    e.addEventListener('click', () => {
+        localStorage.removeItem('usuario');
+        location.replace('./index.html');
+    })
+})
+
+document.getElementById('btnNavToggle').addEventListener('click', () => {
+    const navDropDown = document.getElementById('navDropDown');
+    if (navDropDown.className.includes('hidden')) {
+        navDropDown.classList.remove('hidden');
+        navDropDown.classList.add('animate__animated', 'animate__fadeInDown');
+    } else {
+        navDropDown.classList.remove('animate__fadeInDown');
+        navDropDown.classList.add('animate__animated', 'animate__fadeOutUp');
+        setTimeout(() => {
+            navDropDown.classList.add('hidden');
+            navDropDown.classList.remove('animate__fadeOutUp');
+        }, 550);
+    }
+});
 
 document.getElementById('cardNumber').addEventListener('keypress', (e) => {
 
@@ -70,14 +112,20 @@ function pay() {
     let cartList = JSON.parse(localStorage.getItem('carrito'))
 
     const tdcInput = document.getElementById('cardNumber').value.replace(/ /g, "");
-    
+    const expiryInput = document.getElementById('expiry').value.replace("/", "");
     const nameInput = document.getElementById('holderName').value;
-    const cvvInput = document.getElementById('cvv').value;
+    const cvvInput = document.getElementById('cvv').value
 
     //Regex
     const tdcRegex = /^[0-9]{16}$/;
     const nameRegex = /^[A-Za-zñÑáéíóúÁÉÍÓÚ\s]+$/;
     const cvvRegex = /^[0-9]{3}$/;
+    const expiryRegex = /^[0-9]{4}$/;
+
+    if (!expiryRegex.test(expiryInput)) {
+        alert("Ingrese una fecha de vencimiento valida (solo numeros)")
+        return;
+    }
 
     if (!tdcRegex.test(tdcInput)) {
         alert("Ingrese un numero de tarjeta de credito valido (16 digitos)")
@@ -144,22 +192,27 @@ function displayAll() {
 
     let totalToPay = 0;
 
+    if (cartList.length == 0) {
+        container.innerHTML = `<h3 class="text-7xl text-red-400 font-bold"> No hay nada en el carrito</h3>`
+        return;
+    }
+
     cartList.forEach(producto => {
 
         const element = document.createElement('div')
         element.classList.add('productoCarrito', 'mt-4');
         totalToPay += producto.amount * producto.price;
         element.innerHTML = `
-        <div class="border border-gray-300  p-5 mb-4 rounded flex justify-between items-center">
+        <div class="border border-gray-300 gap-x-3 p-5 mb-4 rounded flex justify-between items-center">
             <div>
                 <h3 class="text-pantone font-bold">${producto.name}</h3>
-                <p class=" pt-2 pb-1 text-white w-full md:w-96">${producto.description}</p>
+                <p class="hidden md:block pt-2 pb-1 text-white w-full md:w-96">${producto.description}</p>
                 <p class=" text-pantone font-semibold">Precio: <span class="text-white font-normal">$${producto.price} c/u</span></p>
                 <p class=" text-pantone font-semibold">Total: <span class="text-white font-normal">$${(producto.price * producto.amount).toFixed(2)}</span></p>
                 <p class=" text-pantone font-semibold">Cantidad: <span class="text-white font-normal">${producto.amount}</span></p>
             </div>
             <div>
-                <img class=" w-28 h-28 object-cover" src="${producto.imgUrl}" alt="">
+                <img class=" w-32 h-32 object-cover" src="${producto.imgUrl}" alt="">
             </div>
         </div>
         `

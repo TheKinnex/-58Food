@@ -18,32 +18,7 @@
                         <img class="w-20 pb-2" src="./img/logo-color-blanco.svg" alt="">
                     </a>
                 </div>
-
-                <!--Btn Hamburguesa-->
-                <div class=" flex lg:hidden ">
-                    <div class=" flex justify-center items-center gap-x-2 text-sm">
-                        <button id="btnNavToggle">
-                            <img class="w-10" src="" alt="">
-                        </button>
-                    </div>
-                </div>
             </nav>
-
-        </div>
-
-        <!--Menu desplegable-->
-        <div id="navDropDown" class=" absolute w-full left-0 hidden bg-white   ">
-            <ul class="text-lg">
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="#">Home</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./login.html">Iniciar Sesion</a>
-                </li>
-                <li class=" pl-2 border border-solid border-gray-500">
-                    <a href="./register.html">Registrarse</a>
-                </li>
-            </ul>
         </div>
     </nav>
 
@@ -54,29 +29,44 @@
                     Nombre
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="nameInputR" type="text" placeholder="Nombre">
+                <label class=" text-red-500 hidden" id="errorTextName">
+                    *El nombre no puede contener ni numeros ni espacios
+                </label>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="passwordInputR">
                     Contraseña
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="passwordInputR" type="password" placeholder="******">
+                <label class=" text-red-500 hidden" id="errorTextPassword">
+                    *La contraseña debe contener una letra mayuscula, un numero y un caracter especial.
+                </label>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="emailInputR">
                     Correo electrónico
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="emailInputR" type="email" placeholder="correo@example.com">
+                <label class=" text-red-500 hidden" id="errorTextEmail">
+                    *El correo debe tener un arroba y la terminación ".com"
+                </label>
             </div>
             <div class="mb-6">
                 <label class="block text-gray-700 text-sm font-bold mb-2" for="phoneInputR">
                     Teléfono
                 </label>
                 <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="phoneInputR" type="tel" placeholder="123456789">
+                <label class=" text-red-500 hidden" id="errorTextPhone">
+                    *El telefono no puede contener letras y debe tener 11 digitos
+                </label>
             </div>
             <div class="flex items-center justify-between">
                 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" id="btnRegister">
                     Registrar
                 </button>
+                <a class=" text-blue-500 font-bold py-2 px-4 text-xs rounded focus:outline-none focus:shadow-outline" href="./login.html">
+                    Ya tienes una cuenta?
+                </a>
             </div>
         </div>
     </main>
